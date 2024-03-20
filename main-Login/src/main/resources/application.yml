@@ -14,4 +14,5 @@ spring:
 
 
 jwt:
-  secret: d800a2ceefa41ace0235c35c7b9e60be373e5a3b74b62803823f7a2a6e7c2f08
+  secret:
+   key: d800a2ceefa41ace0235c35c7b9e60be373e5a3b74b62803823f7a2a6e7c2f08
