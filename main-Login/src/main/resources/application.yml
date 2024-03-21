@@ -1,6 +1,6 @@
 spring:
   database:
-    url: jdbc:mariadb://3.35.197.144:3306/order
+    url: jdbc:mariadb://3.35.197.144:3306/oms
     driver-class-name: org.mariadb.jdbc.Driver
     username: root
     password: 1234
