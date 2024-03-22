@@ -98,7 +98,7 @@ create table inventory
             on update cascade on delete cascade
 );
 
-create table `order`
+create table order_master
 (
     order_number      int                           not null
         primary key,

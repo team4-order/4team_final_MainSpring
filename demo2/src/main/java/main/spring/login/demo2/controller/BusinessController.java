@@ -16,7 +16,7 @@ public class BusinessController {
     private BusinessService businessService;
 
     @GetMapping("{businessId}")
-    public Business getBusinessById(@PathVariable String businessId) {
+    public Business getBusinessById(@PathVariable("businessId") String businessId) {
         return businessService.getBusinessById(businessId);
     }
 }
