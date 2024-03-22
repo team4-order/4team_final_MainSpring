@@ -1,12 +1,10 @@
 package main.spring.login.repository;
 
+import main.spring.login.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import main.spring.login.entity.Member;
-
 import java.util.Optional;
-import java.util.OptionalInt;
 
 @Repository
 public interface MemberRepository extends JpaRepository<Member, String> {

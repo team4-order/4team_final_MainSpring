@@ -2,7 +2,6 @@ package main.spring.login.service;
 
 
 import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +12,6 @@ import main.spring.login.entity.Member;
 import main.spring.login.jwt.JwtUtil;
 import main.spring.login.repository.MemberRepository;
 import main.spring.login.security.UserRoleEnum;
-import org.apache.tomcat.Jar;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

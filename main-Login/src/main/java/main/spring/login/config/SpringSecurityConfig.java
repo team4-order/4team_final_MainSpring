@@ -1,6 +1,5 @@
 package main.spring.login.config;
 
-import io.jsonwebtoken.JwtBuilder;
 import lombok.RequiredArgsConstructor;
 import main.spring.login.jwt.JwtAuthFilter;
 import main.spring.login.jwt.JwtUtil;
