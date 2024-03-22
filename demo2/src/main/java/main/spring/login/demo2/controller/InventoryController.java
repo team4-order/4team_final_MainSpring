@@ -26,7 +26,7 @@ public class InventoryController {
     }
 
     // 창고 코드를 파라미터로 받아 해당 창고에 속한 재고 목록을 반환하는 엔드포인트 추가
-//    @GetMapping(params = "storageCode")
+//    @GetMapping(params = "storageCode") params로 하니깐 에러뜸..
     @GetMapping("/read/{storageCode}")
 //    public List<Inventory> getInventoriesByStorageCode(@RequestParam String storageCode) {
     public List<Inventory> getInventoriesByStorageCode(@PathVariable String storageCode) {
