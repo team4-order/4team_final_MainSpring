@@ -1,9 +1,14 @@
-package main.spring.login.demo2.entity;
 
+package main.spring.login.demo2.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -42,7 +47,7 @@ public class Contact {
     @Column(name = "business_id")
     private String businessId;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "storage_code", referencedColumnName = "contact_code", insertable = false, updatable = false)
     private Contact storageContact;
 

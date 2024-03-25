@@ -6,46 +6,47 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 
-@Table(name = "order_master")
+
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonIgoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name = "order_master")
 public class OrderMaster {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_number")
+    @Column(name = "order_number", nullable = false)
     private int orderNumber;
 
-    @Column(name = "order_date", nullable = false, columnDefinition = "DATE DEFAULT CURRENT_DATE")
-    @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime orderDate;
+    @CreationTimestamp
+    @Column(name = "order_date", nullable = false)
+    private Date orderDate;
 
-    @Column(name = "adjustment_status", nullable = false, columnDefinition = "varchar(255) default '미정산' not null")
-    @ColumnDefault("'미정산'")
+    @ColumnDefault("미정산")
+    @Column(name = "adjustment_status", nullable = false)
     private String adjustmentStatus;
 
     @Column(name = "order_price", nullable = false)
-    private int orderPrice;
+    private int orderPrices;
 
-    @Column(name = "customer_code", nullable = false)
+    @Column(name = "customer_code")
     private String customerCode;
 
-    @Column(name = "storage_code", nullable = false)
+    @Column(name = "storage_code")
     private String storageCode;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_code", referencedColumnName = "contact_code", insertable = false, updatable = false)
-    private Contact customer;
+    private Contact customerContact;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "storage_code", referencedColumnName = "contact_code", insertable = false, updatable = false)
-    private Contact storage;
+    private Contact storageContact;
 
-    // Getters and Setters
 }
-
