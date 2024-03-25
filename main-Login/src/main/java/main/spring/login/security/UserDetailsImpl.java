@@ -7,12 +7,15 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Slf4j
 public class UserDetailsImpl implements UserDetails {
 
+    @Serial
+    private static final long serialVersionUID = 8256235982535387011L;
     private final Member member;
     private final String password;
     private final String username;
@@ -53,7 +56,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.getUsername();
+        return this.username;
     }
 
     @Override

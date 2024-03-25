@@ -40,7 +40,6 @@ public class JwtUtil {
         @Value("${jwt.secret.key}")
         private String secretKey;
         private Key key;
-
         private static final SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
 
@@ -91,7 +90,7 @@ public class JwtUtil {
 
         public boolean validateToken(String token){
             try {
-                Jwts.parser().setSigningKey(key).build().parseClaimsJws(token);
+                Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
                 return true;
             } catch (SecurityException | MalformedJwtException e) {
                 log.info("Invalid JWT signature, 유효하지 않은 JWT 서명 입니다.");
@@ -109,7 +108,7 @@ public class JwtUtil {
 
         public Claims getUserInfoFromToken(String token)
         {
-            return Jwts.parser().setSigningKey(key).build().parseClaimsJws(token).getBody();
+            return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
         }
 
         public Authentication createAuthentication(String username)

@@ -34,7 +34,7 @@ public enum UserRoleEnum {
                 case "ROLE_VIP_MEMBER":
                     return VIP_MEMBER;
                 case "ROLE_ADMIN":
-                        return ADMIN;
+                    return ADMIN;
 
             }
             return null;

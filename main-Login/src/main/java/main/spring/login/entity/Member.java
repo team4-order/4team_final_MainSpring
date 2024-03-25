@@ -18,12 +18,13 @@ public class Member {
     // 사업자 번호 long
     // 기업 홈페이지 링크 String
 
-    @jakarta.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String Id;
+    private Long Id;
 
     @Column(nullable = false, unique = true)
     private String memberName;
+
     @Column(nullable = false)
     private String password;
 

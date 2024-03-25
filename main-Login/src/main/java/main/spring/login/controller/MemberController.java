@@ -22,11 +22,18 @@ public class MemberController {
     private final MemberService memberService;
 
 
-    public MemberController(MemberService memberService) {
+    public MemberController(MemberService memberService)
+    {
         this.memberService = memberService;
     }
 
     //이미 로그인된 사용자일 경우 인덱스 페이지로 강제이동
+   @GetMapping("/index")
+   public String index(){
+        return "index";
+    }
+
+
     @GetMapping("/login")
     public String login(@AuthenticationPrincipal UserDetailsImpl userDetails)
     {
@@ -40,8 +47,9 @@ public class MemberController {
     }
 
     @GetMapping("/signup")
-    public String signUp(){
-        return "signup";
+    public String signUp()
+    {
+        return "signUp";
     }
 
     @GetMapping("/vip")

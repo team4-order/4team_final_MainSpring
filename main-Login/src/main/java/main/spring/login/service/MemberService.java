@@ -27,6 +27,7 @@ public class MemberService {
     private final JwtUtil jwtUtil;
     private final PasswordEncoder passwordEncoder;
 
+    // 회원 가입
     @Transactional
     public void signUp(SignUpRequestDto requestDto){
 
