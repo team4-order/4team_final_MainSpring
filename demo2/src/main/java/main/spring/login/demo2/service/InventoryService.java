@@ -19,8 +19,8 @@ public class InventoryService {
         return repository.findAll();
     }
 
-    // 특정 창고 코드에 해당하는 재고 목록을 반환하는 메소드 추가
+    // 특정 창고 코드에 해당하는 재고 목록을 반환하는 메소드 수정
     public List<Inventory> findByStorageCode(String storageCode) {
-        return repository.findByStorage_ContactCode(storageCode);
+        return repository.findByStorageCode(storageCode); // 메소드명 수정
     }
 }
