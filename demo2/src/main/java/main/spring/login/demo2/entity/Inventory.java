@@ -1,44 +1,59 @@
 package main.spring.login.demo2.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import java.io.Serializable;
-import java.util.Date;
+import lombok.NoArgsConstructor;
 
-@Data
-@Entity
+import java.time.LocalDateTime;
+
 @Table(name = "inventory")
-@IdClass(Inventory.InventoryId.class)
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Inventory {
+    @Id
+    @Column(name = "first_stock_date", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime firstStockDate;
 
     @Id
-    @Column(name = "first_stock_date")
-    private Date firstStockDate;
-
-    @Id
-    @Column(name = "goods_code")
+    @Column(name = "goods_code", nullable = false)
     private String goodsCode;
 
     @Id
-    @Column(name = "goods_grade", length = 1) // 길이는 1로 유지합니다.
-    private String goodsGrade; // 이 필드는 이미 CHAR(1)로 정의되어 있으므로, 코드에서 변경하지 않습니다.
+    @Column(name = "goods_grade", nullable = false)
+    private String goodsGrade;
 
-    @Column(name = "inventory_quantity")
-    private Long inventoryQuantity;
+    @Column(name = "inventory_quantity", nullable = false, columnDefinition = "MEDIUMTEXT")
+    private String inventoryQuantity;
 
-    @Column(name = "sales_price")
-    private Integer salesPrice;
+    @Column(name = "sales_price", nullable = false)
+    private int salesPrice;
 
-    @Column(name = "grade_evaluation_dates")
-    private Date gradeEvaluationDates;
+    @Column(name = "grade_evaluation_dates", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime gradeEvaluationDates;
 
-    @ManyToOne
-    @JoinColumn(name = "storage_code", referencedColumnName = "contact_code") // storage_code 필드를 contact_code 참조로 정의합니다.
-    private Storage storage; // Storage 엔티티와의 관계를 정의합니다.
+    @Column(name = "storage_code", nullable = false, columnDefinition = "VARCHAR(10) default ''")
+    private String storageCode;
 
-    public static class InventoryId implements Serializable {
-        private Date firstStockDate;
-        private String goodsCode;
-        private String goodsGrade;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "storage_code", referencedColumnName = "contact_code", insertable = false, updatable = false)
+    private Contact contact;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "goods_code", referencedColumnName = "goods_code", insertable = false, updatable = false)
+    private GradePrice gradePriceC;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "goods_grade", referencedColumnName = "goods_grade", insertable = false, updatable = false)
+    private GradePrice gradePriceG;
+
+
+    // Getters and Setters
+>>>>>>> origin/Dev/0.1.0
 }
