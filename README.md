@@ -1,5 +1,5 @@
 # 4team_final_MainSpring
-spring 메인 레포
+spring 메인 레포!!
 
 ### 다들 규칙 확인하시고 시작하세요!!
 
