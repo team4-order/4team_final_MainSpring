@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Table(name = "inventory")
@@ -56,15 +55,5 @@ public class Inventory {
 
 
     // Getters and Setters
-
-    @ManyToOne
-    @JoinColumn(name = "storage_code", referencedColumnName = "contact_code") // storage_code 필드를 contact_code 참조로 정의합니다.
-    private Storage storage; // Storage 엔티티와의 관계를 정의합니다.
-
-    public static class InventoryId implements Serializable {
-        private String firstStockDate;
-        private String goodsCode;
-        private String goodsGrade;
-    }
 
 }
