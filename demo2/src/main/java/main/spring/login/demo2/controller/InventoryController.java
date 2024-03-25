@@ -1,6 +1,6 @@
 package main.spring.login.demo2.controller;
 
-import main.spring.login.demo2.entity.Inventory;
+import main.spring.login.demo2.entity.Inventory_K;
 import main.spring.login.demo2.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +21,7 @@ public class InventoryController {
     }
 
     @GetMapping
-    public List<Inventory> getAllInventories() {
+    public List<Inventory_K> getAllInventories() {
         return service.findAll();
     }
 
@@ -29,7 +29,7 @@ public class InventoryController {
 //    @GetMapping(params = "storageCode") params로 하니깐 에러뜸..
     @GetMapping("/read/{storageCode}")
 //    public List<Inventory> getInventoriesByStorageCode(@RequestParam String storageCode) {
-    public List<Inventory> getInventoriesByStorageCode(@PathVariable String storageCode) {
+    public List<Inventory_K> getInventoriesByStorageCode(@PathVariable String storageCode) {
         return service.findByStorageCode(storageCode);
     }
 
