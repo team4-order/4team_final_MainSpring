@@ -1,5 +1,9 @@
 package main.spring.login.demo2.entity;
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> origin/warehouses/0.1.3/K
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -55,4 +59,8 @@ public class Inventory {
 
 
     // Getters and Setters
+<<<<<<< HEAD
+>>>>>>> origin/Dev/0.1.0
+=======
+>>>>>>> origin/warehouses/0.1.3/K
 }
