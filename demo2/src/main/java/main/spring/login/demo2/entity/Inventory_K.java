@@ -9,7 +9,7 @@ import java.util.Date;
 @Entity
 @Table(name = "inventory")
 @IdClass(Inventory.InventoryId.class)
-public class Inventory {
+public class Inventory_K {
 
     @Id
     @Column(name = "first_stock_date")
