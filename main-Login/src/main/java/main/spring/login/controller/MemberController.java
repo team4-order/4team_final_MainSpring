@@ -9,14 +9,19 @@ import main.spring.login.dto.LoginRequestDto;
 import main.spring.login.dto.SignUpRequestDto;
 import main.spring.login.security.UserDetailsImpl;
 import main.spring.login.service.MemberService;
+import org.springframework.boot.Banner;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @Slf4j
 @Controller
+@RestController
 public class MemberController {
 
     private final MemberService memberService;
@@ -35,16 +40,33 @@ public class MemberController {
 
 
     @GetMapping("/login")
-    public String login(@AuthenticationPrincipal UserDetailsImpl userDetails)
+    public ModelAndView login(@AuthenticationPrincipal UserDetailsImpl userDetails)
     {
+        ModelAndView modelAndView = new ModelAndView();
+
+
         if(userDetails != null)
         {
             log.info(userDetails.getMember().getMemberName() + "님이 로그인 페이지로 이동을 시도했습니다. -> index 페이지로 강제 이동시켰습니다.");
-            return "redirect:/index";
+            modelAndView.setViewName("index.html");
+                       return modelAndView;
         }
-
-            return "login";
+            modelAndView.setViewName("login.html");
+            return modelAndView;
     }
+
+// rest api test 후 원복 예정
+//    @GetMapping("/login")
+//    public String login(@AuthenticationPrincipal UserDetailsImpl userDetails)
+//    {
+//        if(userDetails != null)
+//        {
+//            log.info(userDetails.getMember().getMemberName() + "님이 로그인 페이지로 이동을 시도했습니다. -> index 페이지로 강제 이동시켰습니다.");
+//            return "redirect:/index";
+//        }
+//
+//        return "login";
+//    }
 
     @GetMapping("/signup")
     public String signUp()
@@ -74,11 +96,22 @@ public class MemberController {
     // 로그인
 
     @PostMapping("/api/login")
-    public String login(LoginRequestDto requestDto, HttpServletResponse response)
-    {
+    public ModelAndView login(LoginRequestDto requestDto, HttpServletResponse response) {
         memberService.login(requestDto, response);
-        return "redirect:/index";
+
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.setViewName("index.html");
+        return modelAndView;
+        // return "redirect:/index";
     }
+
+    //  restcontroller test 후 다시 사용
+//    @PostMapping("/api/login")
+//    public String login(LoginRequestDto requestDto, HttpServletResponse response)
+//    {
+//        memberService.login(requestDto, response);
+//        return "redirect:/index";
+//    }
 
     @GetMapping("/cookie/test")
     public String test(@CookieValue(value= "Authorization", defaultValue="", required = false) String test){
