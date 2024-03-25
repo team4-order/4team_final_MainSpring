@@ -21,5 +21,12 @@ public class InventoryService {
         return inventoryRepository.findAll();
     }
 
+    public List<Inventory> findByStorageCode(String storageCode) {
+        return inventoryRepository.findByStorageCode(storageCode);
+    }
+
     // 필요한 비즈니스 로직을 추가할 수 있습니다.
+//    public List<Inventory> findByStorageCode(String storageCode) {
+//        return inventoryRepository.findByStorageCode(storageCode);
+//    }
 }

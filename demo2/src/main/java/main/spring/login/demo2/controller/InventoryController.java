@@ -4,6 +4,7 @@ import main.spring.login.demo2.entity.Inventory;
 import main.spring.login.demo2.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,6 +26,16 @@ public class InventoryController {
         return inventoryService.findAll();
     }
 
-    // 추가적인 엔드포인트 정의가 필요할 수 있습니다.
+
+
+//    @GetMapping("/read/{storageCode}")
+//    public List<Inventory> findByStorageCode(@PathVariable String storageCode) {
+//        return inventoryService.findByStorageCode(storageCode);
+//    }
+
+    @GetMapping("/read/{storageCode}")
+    public List<Inventory> findByStorageCode(@PathVariable String storageCode) {
+        return inventoryService.findByStorageCode(storageCode);
+    }
 }
 
