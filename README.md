@@ -12,3 +12,6 @@ changes
 
 3. created new project (main-Login)
 > login page, register page
+
+4. branch registerPage/0.1.3/J
+> 0.1.2버전에서 지속되는 문제를 해결하기 위해 새로운 코드로 생성해볼 예정
