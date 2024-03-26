@@ -20,6 +20,7 @@ public class OrderProductController {
 
     @GetMapping("/detail/{orderNumber}")
     public List<OrderProduct> getOrderProductsByOrderNumber(@PathVariable("orderNumber") Integer orderNumber) {
+        System.out.println(orderNumber);
         return orderProductService.getOrderProductsByOrderNumber(orderNumber);
     }
 

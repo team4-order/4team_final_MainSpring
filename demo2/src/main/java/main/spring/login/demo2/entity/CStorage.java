@@ -23,7 +23,11 @@ public class CStorage {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_code", referencedColumnName = "contact_code", insertable = false, updatable = false)
-    private Contact contact;
+    private Contact contactC;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "storage_code", referencedColumnName = "storage_code", insertable = false, updatable = false)
+    private Contact contactS;
 
     // Getters and Setters
 }
