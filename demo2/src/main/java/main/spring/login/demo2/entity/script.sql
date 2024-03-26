@@ -51,7 +51,7 @@ create table goods_master
 
 create table grade_price
 (
-    goods_grade char        not null,
+    goods_grade varchar(5)        not null,
     goods_code  varchar(10) not null,
     input_stock int         not null,
     primary key (goods_grade, goods_code),
@@ -65,7 +65,7 @@ create table input
     input_id       int         not null
         primary key,
     goods_code     varchar(10) not null,
-    goods_grade    char        not null,
+    goods_grade    varchar(5)        not null,
     input_quantity mediumtext  not null,
     input_day      date        not null,
     supply_code    varchar(10) not null,
@@ -81,7 +81,7 @@ create table inventory
 (
     first_stock_date       date                                   not null,
     goods_code             varchar(10)                            not null,
-    goods_grade            char                                   not null,
+    goods_grade            varchar(5)                                 not null,
     inventory_quantity     mediumtext                             not null,
     sales_price            int                                    not null,
     grade_evaluation_dates date        default `first_stock_date` not null,
@@ -124,16 +124,16 @@ create table delivery
     delivery_date    date        null,
     order_number     int         not null,
     constraint FK_order_TO_delivery_1
-        foreign key (order_number) references `order` (order_number)
+        foreign key (order_number) references `order_master` (order_number)
             on update cascade on delete cascade
 );
 
 create table order_product
 (
     order_number    int         not null,
-    orderd_quantity int         not null,
-    orderd_price    int         not null,
-    goods_grade     char        not null,
+    order_quantity int         not null,
+    order_price    int         not null,
+    goods_grade     varchar(5)        not null,
     goods_code      varchar(10) not null,
     primary key (order_number, goods_code, goods_grade),
     constraint FK_inventory_TO_order_product_1
@@ -143,7 +143,7 @@ create table order_product
         foreign key (goods_code) references inventory (goods_code)
             on update cascade on delete cascade,
     constraint FK_order_TO_order_product_1
-        foreign key (order_number) references `order` (order_number)
+        foreign key (order_number) references `order_master` (order_number)
             on update cascade on delete cascade
 );
 

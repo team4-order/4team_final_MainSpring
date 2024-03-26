@@ -33,7 +33,7 @@ public class OrderMaster {
     private String adjustmentStatus;
 
     @Column(name = "order_price", nullable = false)
-    private int orderPrices;
+    private int orderPrice;
 
     @Column(name = "customer_code")
     private String customerCode;

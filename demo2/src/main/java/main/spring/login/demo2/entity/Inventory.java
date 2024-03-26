@@ -25,7 +25,7 @@ public class Inventory {
     private String goodsCode;
 
     @Id
-    @Column(name = "goods_grade", nullable = false)
+    @Column(name = "goods_grade", nullable = false, length = 2)
     private String goodsGrade;
 
     @Column(name = "inventory_quantity", nullable = false, columnDefinition = "MEDIUMTEXT")

@@ -18,4 +18,6 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     public List<OrderMaster> getOrderMastersByCustomerCode(String customerCode) {
         return orderMasterRepository.findByCustomerCode(customerCode);
     }
+
+
 }
