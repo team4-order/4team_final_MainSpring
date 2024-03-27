@@ -57,6 +57,7 @@ public class Inventory {
 
 
     // Getters and Setters
+    // test
 
 
     public static class InventoryId implements Serializable {
