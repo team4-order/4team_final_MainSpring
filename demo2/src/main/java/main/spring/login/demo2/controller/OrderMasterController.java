@@ -19,10 +19,17 @@ public class OrderMasterController {
     @Autowired
     private OrderMasterService orderMasterService;
 
+    @GetMapping("/customer")
+    public List<OrderMaster> getOrders() {
+        return orderMasterService.getOrderMaster();
+    }
+
     @GetMapping("/customer/{customerCode}")
     public List<OrderMaster> getOrdersByCustomerCode(@PathVariable("customerCode") String customerCode) {
         return orderMasterService.getOrderMastersByCustomerCode(customerCode);
     }
+
+
 
 
 

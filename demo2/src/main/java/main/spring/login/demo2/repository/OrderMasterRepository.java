@@ -7,4 +7,7 @@ import java.util.List;
 
 public interface OrderMasterRepository extends JpaRepository<OrderMaster, Integer> {
     List<OrderMaster> findByCustomerCode(String customerCode);
+
+    @Override
+    List<OrderMaster> findAll();
 }

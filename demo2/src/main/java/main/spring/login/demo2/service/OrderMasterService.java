@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface OrderMasterService {
     List<OrderMaster> getOrderMastersByCustomerCode(String customerCode);
+    List<OrderMaster> getOrderMaster();
 }
