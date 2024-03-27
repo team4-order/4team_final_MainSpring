@@ -1,6 +1,8 @@
 package main.spring.login.demo2.service;
 
+import main.spring.login.demo2.entity.GoodsMaster;
 import main.spring.login.demo2.entity.Inventory;
+import main.spring.login.demo2.repository.GoodsMasterRepository;
 import main.spring.login.demo2.repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +13,12 @@ import java.util.List;
 public class InventoryService {
 
     private final InventoryRepository inventoryRepository;
+    private final GoodsMasterRepository goodsMasterRepository;
 
     @Autowired
-    public InventoryService(InventoryRepository inventoryRepository) {
+    public InventoryService(InventoryRepository inventoryRepository ,GoodsMasterRepository goodsMasterRepository) {
         this.inventoryRepository = inventoryRepository;
+        this.goodsMasterRepository = goodsMasterRepository;
     }
 
     public List<Inventory> findAll() {
@@ -22,11 +26,15 @@ public class InventoryService {
     }
 
     public List<Inventory> findByStorageCode(String storageCode) {
-        return inventoryRepository.findByStorageCode(storageCode);
+        List<Inventory> inventories = inventoryRepository.findByStorageCode(storageCode);
+        // 여기서는 단순히 재고 목록을 반환하며, 실제 상품 이름을 포함하는 로직은 컨트롤러에서 처리
+        return inventories;
     }
 
-    // 필요한 비즈니스 로직을 추가할 수 있습니다.
-//    public List<Inventory> findByStorageCode(String storageCode) {
-//        return inventoryRepository.findByStorageCode(storageCode);
-//    }
+    public String findGoodsNameByGoodsCode(String goodsCode) {
+        return goodsMasterRepository.findById(goodsCode)
+                .map(GoodsMaster::getGoodsName)
+                .orElse("Unknown Product");
+    }
+
 }
