@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class GradePrice {
     @Id
-    @Column(name = "goods_grade")
+    @Column(name = "goods_grade", length = 2)
     private String goodsGrade;
 
     @Id

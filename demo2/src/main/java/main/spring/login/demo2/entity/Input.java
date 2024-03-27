@@ -23,7 +23,7 @@ public class Input {
     @Column(name = "goods_code", nullable = false)
     private String goodsCode;
 
-    @Column(name = "goods_grade", nullable = false)
+    @Column(name = "goods_grade", nullable = false, length = 2)
     private String goodsGrade;
 
     @Column(name = "input_quantity", nullable = false, columnDefinition = "MEDIUMTEXT")
