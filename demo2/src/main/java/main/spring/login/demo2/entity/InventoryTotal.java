@@ -28,6 +28,9 @@ public class InventoryTotal {
     @Column(name = "total_quantity", nullable = false)
     private int totalQuantity;
 
+    @Column(name = "storage_code", nullable = false)
+    private String storageCode;
+
     @ManyToOne
     @JoinColumn(name = "goods_code", referencedColumnName = "goods_code", insertable = false, updatable = false)
     private Inventory inventoryC;
@@ -35,5 +38,9 @@ public class InventoryTotal {
     @ManyToOne
     @JoinColumn(name = "goods_grade", referencedColumnName = "goods_grade", insertable = false, updatable = false)
     private Inventory inventoryG;
+
+    @ManyToOne
+    @JoinColumn(name = "storage_code", referencedColumnName = "storage_code", insertable = false, updatable = false)
+    private Inventory inventoryS;
     // Constructors, getters, and setters
 }
