@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface InventoryYRepository extends JpaRepository<Inventory, String> {
+public interface InventoryTotalRepository extends JpaRepository<Inventory, String> {
     @Query("SELECT\n" +
             "    inventory.goods_code, inventory.goods_grade,\n" +
             "    SUM(CAST(inventory.inventory_quantity AS UNSIGNED)) AS total_inventory_quantity\n" +
