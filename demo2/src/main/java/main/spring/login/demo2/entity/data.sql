@@ -7,6 +7,7 @@ VALUES
 -- contact 테이블에 더미 데이터 삽입 /(공급처V, 판매처C, 창고S)
 INSERT INTO `contact` (`contact_code`, `contact_delimiter`, `contact_name`, `contact_address`, `customer_password`, `storage_code`, `business_id`)
 VALUES
+    ('CON002', 'C', 'Customer2', '321 Street, City2', 'custpass2', NULL, 'BUS002');
     ('CON001', 'C', 'Customer1', '123 Street, City1', 'custpass1', NULL, 'BUS002'),
     ('STR001', 'S', 'Storage1', '789 Street, City3', null, null, 'BUS002'),
     ('STR002', 'S', 'Storage2', '987 Street, City4', null, null, 'BUS002'),

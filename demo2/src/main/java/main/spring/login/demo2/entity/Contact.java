@@ -56,6 +56,12 @@ public class Contact {
     private Business business;
 
 
+    public Contact(String contactCode, String contactName, String contactAddress) {
+        this.contactCode = contactCode;
+        this.contactName = contactName;
+        this.contactAddress = contactAddress;
+    }
+
 
 
 //    @ManyToOne
