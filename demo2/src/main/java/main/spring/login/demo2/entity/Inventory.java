@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Table(name = "inventory")
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@IdClass(InventoryId.class) // 복합 키 클래스 지정
 public class Inventory {
     @Id
     @Column(name = "first_stock_date", nullable = false)
@@ -55,4 +57,16 @@ public class Inventory {
 
 
     // Getters and Setters
+    // test
+
+
+    public static class InventoryId implements Serializable {
+        private String firstStockDate;
+        private String goodsCode;
+        private String goodsGrade;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "goods_code", referencedColumnName = "goods_code", insertable = false, updatable = false)
+    private GoodsMaster goodsMaster;
 }
