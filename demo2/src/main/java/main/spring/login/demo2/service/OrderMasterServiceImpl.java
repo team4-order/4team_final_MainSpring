@@ -19,5 +19,10 @@ public class OrderMasterServiceImpl implements OrderMasterService {
         return orderMasterRepository.findByCustomerCode(customerCode);
     }
 
+    @Override
+    public List<OrderMaster> findAllOrderMaster() {
+        return orderMasterRepository.findAll();
+    }
+
 
 }
