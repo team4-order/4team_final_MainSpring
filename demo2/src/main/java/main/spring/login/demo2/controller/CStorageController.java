@@ -19,7 +19,7 @@ public class CStorageController {
         this.cStorageService = cStorageService;
     }
 
-    @PostMapping("/ad/addOrUpdate")
+    @PostMapping("/addOrUpdate")
     public CStorage addOrUpdateCStorage(@RequestBody CStorage cStorage) {
         return cStorageService.addOrUpdateCStorage(cStorage.getCustomerCode(), cStorage.getStorageCode());
     }
