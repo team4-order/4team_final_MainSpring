@@ -3,10 +3,7 @@ package main.spring.login.demo2.controller;
 import main.spring.login.demo2.entity.Contact;
 import main.spring.login.demo2.service.VendorService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,4 +29,15 @@ public class VendorController {
                 .map(contact -> ResponseEntity.ok(contact))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    @PutMapping("/updateStorageCode/{contactCode}")
+    public ResponseEntity<Contact> updateStorageCode(@PathVariable String contactCode, @RequestParam String storageCode) {
+        try {
+            Contact updatedContact = vendorService.updateStorageCode(contactCode, storageCode);
+            return ResponseEntity.ok(updatedContact);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

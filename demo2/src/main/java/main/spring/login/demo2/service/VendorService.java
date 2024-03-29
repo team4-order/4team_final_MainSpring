@@ -24,4 +24,12 @@ public class VendorService {
         return vendorRepository.findByContactCode(contactCode);
     }
 
+
+    public Contact updateStorageCode(String contactCode, String newStorageCode) {
+        return vendorRepository.findByContactCode(contactCode).map(contact -> {
+            contact.setStorageCode(newStorageCode);
+            return vendorRepository.save(contact);
+        }).orElseThrow(() -> new RuntimeException("Contact not found with code: " + contactCode));
+    }
+
 }
