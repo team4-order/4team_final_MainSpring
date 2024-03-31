@@ -1,17 +1,11 @@
-
 package main.spring.login.demo2.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.Random;
 
 @Entity
 @Data
@@ -24,11 +18,6 @@ public class Contact {
     @Column(name = "contact_code", nullable = false)
     private String contactCode;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "company_code")
-//    //@JoinColumn(name = "company_code")
-//    private Company company;
-
     @Column(name = "contact_delimiter", nullable = false)
     private String contactDelimiter;
 
@@ -39,7 +28,10 @@ public class Contact {
     private String contactAddress;
 
     @Column(name = "customer_password", nullable = true)
-    private String customer_password;
+    private String customerPassword;
+
+    @Column(name = "customer_phone", nullable = true)
+    private String customerPhone;
 
     @Column(name = "storage_code")
     private String storageCode;
@@ -55,17 +47,5 @@ public class Contact {
     @JoinColumn(name = "business_id", referencedColumnName = "business_id", insertable = false, updatable = false)
     private Business business;
 
-
-    public Contact(String contactCode, String contactName, String contactAddress) {
-        this.contactCode = contactCode;
-        this.contactName = contactName;
-        this.contactAddress = contactAddress;
-    }
-
-
-
-//    @ManyToOne
-//    @JoinColumn(name = "business_code2", referencedColumnName = "business_code")
-//    private Business business;
 
 }

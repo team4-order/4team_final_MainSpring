@@ -1,12 +1,14 @@
 package main.spring.login.demo2.service;
 
+import jakarta.transaction.Transactional;
+import main.spring.login.demo2.dto.ContactDTO;
 import main.spring.login.demo2.entity.Contact;
 import main.spring.login.demo2.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.UUID;
 
 @Service
 public class ContactServiceImpl implements ContactService {
@@ -31,6 +33,21 @@ public class ContactServiceImpl implements ContactService {
     @Override
     public List<Contact> findAllCustomers() {
         return contactRepository.findByContactDelimiter("C"); // 'C' delimiter를 가진 모든 고객 정보 조회
+    }
+
+    @Override
+    public ContactDTO saveContact(ContactDTO contactDTO) {
+        Contact contact = new Contact();
+        contact.setContactCode(contactDTO.getContactCode());
+        contact.setContactDelimiter("C");
+        contact.setContactName(contactDTO.getContactName());
+        contact.setContactAddress(contactDTO.getContactAddress());
+        contact.setCustomerPassword(contactDTO.getCustomerPassword());
+        contact.setCustomerPhone(contactDTO.getCustomerPhone());
+        contact.setStorageCode(contactDTO.getStorageCode());
+        contact.setBusinessId(contactDTO.getBusinessId());
+        contactRepository.save(contact);
+        return contactDTO; // In a real application, you might return a filled DTO
     }
 
 //    @Override
