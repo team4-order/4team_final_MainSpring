@@ -1,6 +1,6 @@
 package main.spring.login.demo2.controller;
 
-import main.spring.login.demo2.entity.Inventory;
+import main.spring.login.demo2.dto.InventoryDTO;
 import main.spring.login.demo2.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,10 +22,9 @@ public class InventoryController {
     }
 
     @GetMapping
-    public List<Inventory> getAllInventories() {
+    public List<InventoryDTO> getAllInventories() {
         return inventoryService.findAll();
     }
-
 
 
 //    @GetMapping("/read/{storageCode}")
@@ -34,7 +33,7 @@ public class InventoryController {
 //    }
 
     @GetMapping("/read/{storageCode}")
-    public List<Inventory> findByStorageCode(@PathVariable String storageCode) {
+    public List<InventoryDTO> findByStorageCode(@PathVariable String storageCode) {
         return inventoryService.findByStorageCode(storageCode);
     }
 }
