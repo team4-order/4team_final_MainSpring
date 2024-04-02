@@ -27,6 +27,11 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     }
 
     @Override
+    public List<OrderMaster> findByBusinessId(String businessId){
+        return orderMasterRepository.findByBusinessId(businessId);
+    }
+
+    @Override
     public OrderMaster updateOrderStatus(Integer orderNumber, String adjustmentStatus) {
         Optional<OrderMaster> optionalOrderMaster = orderMasterRepository.findById(orderNumber);
         if (optionalOrderMaster.isPresent()) {

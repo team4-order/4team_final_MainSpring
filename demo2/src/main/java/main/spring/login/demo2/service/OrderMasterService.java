@@ -10,6 +10,10 @@ public interface OrderMasterService {
 
     List<OrderMaster> findAllOrderMaster();
 
+
+    List<OrderMaster> findByBusinessId(String businessId);
+    //기업ID에 따라 다른 정보 보여주는 것
+
     OrderMaster updateOrderStatus(Integer orderNumber, String adjustmentStatus);
 
 }

@@ -31,9 +31,22 @@ public class ContactServiceImpl implements ContactService {
 //    }
 
     @Override
-    public List<Contact> findAllCustomers() {
-        return contactRepository.findByContactDelimiter("C"); // 'C' delimiter를 가진 모든 고객 정보 조회
+    public List<Contact> findByBusinessIdC(String businessId) {
+        return contactRepository.findByBusinessId(businessId); // 'C' delimiter를 가진 모든 고객 정보 조회
     }
+
+    @Override
+    public List<Contact> findAllSCustomers() {
+        return contactRepository.findByContactDelimiter("S");
+    }
+
+
+    @Override
+    public Contact findByContactCode(String contactCode) {
+        List<Contact> contacts = contactRepository.findByContactCode(contactCode);
+        return contacts.isEmpty() ? null : contacts.get(0);
+    }
+
 
     @Override
     public ContactDTO saveContact(ContactDTO contactDTO) {

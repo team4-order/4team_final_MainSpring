@@ -48,6 +48,12 @@ public class OrderMasterController {
         return ResponseEntity.ok(orderMasters);
     }
 
+    //business id 에 따른 주문 목록
+    @GetMapping("/id/{businessId}")
+    public List<OrderMaster> getOrdersByBusinessId(@PathVariable("businessId") String businessId) {
+        return orderMasterService.findByBusinessId(businessId);
+    }
+
     @PutMapping("/adjustment/{orderNumber}") //정산 상태 바뀐 것 받아오는 controller
     public ResponseEntity<OrderMaster> updateOrderStatus(@PathVariable("orderNumber") Integer orderNumber, @RequestBody OrderMasterDTO orderMasterDTO) {
         OrderMaster updatedOrder = orderMasterService.updateOrderStatus(orderNumber, orderMasterDTO.getAdjustmentStatus());
