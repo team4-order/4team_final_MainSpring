@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "inventory_total")
+@IdClass(InventoryTotalId.class)
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -24,6 +25,10 @@ public class InventoryTotal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "goods_grade")
     private String goodsGrade;
+
+    @Id
+    @Column(name = "storage_code")
+    private String storageCode;
 
     @Column(name = "total_quantity", nullable = false)
     private int totalQuantity;

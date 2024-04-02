@@ -22,6 +22,11 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     }
 
     @Override
+    public List<OrderMaster> findByBusinessId(String businessId){
+        return orderMasterRepository.findByBusinessId(businessId);
+    }
+
+    @Override
     public List<OrderMaster> findAllOrderMaster() {
         return orderMasterRepository.findAll();
     }

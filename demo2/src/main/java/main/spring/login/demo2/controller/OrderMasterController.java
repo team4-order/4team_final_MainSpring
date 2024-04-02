@@ -25,9 +25,20 @@ public class OrderMasterController {
     @Autowired // 이 부분이 누락되어 있습니다.
     private OrderProductService orderProductService; // 이제 OrderProductService를 주입받아 사용할 수 있습니다.
 
+    @GetMapping("/customer")
+    public List<OrderMaster> getOrders() {
+        return orderMasterService.findAllOrderMaster();
+    }
+
     @GetMapping("/customer/{customerCode}")
     public List<OrderMaster> getOrdersByCustomerCode(@PathVariable("customerCode") String customerCode) {
         return orderMasterService.getOrderMastersByCustomerCode(customerCode);
+    }
+
+    //business id 에 따른 주문 목록
+    @GetMapping("/id/{businessId}")
+    public List<OrderMaster> getOrdersByBusinessId(@PathVariable("businessId") String businessId) {
+        return orderMasterService.findByBusinessId(businessId);
     }
 
     @GetMapping("/customer/{customerCode}/products")

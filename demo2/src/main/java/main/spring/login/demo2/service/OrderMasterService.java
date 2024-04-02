@@ -12,4 +12,5 @@ public interface OrderMasterService {
 
     OrderMaster updateOrderStatus(Integer orderNumber, String adjustmentStatus);
 
+    List<OrderMaster> findByBusinessId(String businessId);
 }
