@@ -1,6 +1,5 @@
 package main.spring.login.demo2.service;
 
-import main.spring.login.demo2.dto.OrderMasterDTO;
 import main.spring.login.demo2.entity.OrderMaster;
 import main.spring.login.demo2.repository.OrderMasterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
