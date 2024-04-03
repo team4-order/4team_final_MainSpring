@@ -18,5 +18,7 @@ public interface InventoryTotalRepository  extends JpaRepository<InventoryTotal,
             "WHERE c.customer_code = ?1 " +
             "GROUP BY i.goods_code, i.goods_grade", nativeQuery = true)
     List<InventorySummary> findInventorySummaryByCustomerCode(String customerCode);
+
+    List<InventoryTotal> findInventoryTotalByStorageCode(String storageCode);
 }
 

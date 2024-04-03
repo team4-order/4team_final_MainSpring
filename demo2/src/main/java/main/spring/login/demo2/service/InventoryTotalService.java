@@ -8,4 +8,5 @@ import java.util.List;
 public interface InventoryTotalService {
     List<InventoryTotal> getTotalByCustomerCode(String customerCode);
     List<InventorySummary> getTotalSummaryByCustomerCode(String customerCode);
+    List<InventoryTotal> getTotalByStorageCode(String storageCode);
 }

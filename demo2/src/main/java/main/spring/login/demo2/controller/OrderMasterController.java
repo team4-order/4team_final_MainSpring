@@ -4,6 +4,7 @@ import main.spring.login.demo2.dto.OrderMasterDTO;
 import main.spring.login.demo2.entity.Contact;
 import main.spring.login.demo2.entity.OrderMaster;
 import main.spring.login.demo2.entity.OrderProduct;
+import main.spring.login.demo2.repository.OrderMasterRepository;
 import main.spring.login.demo2.service.OrderMasterService;
 import main.spring.login.demo2.service.OrderProductService;
 import org.hibernate.query.Order;
@@ -20,7 +21,9 @@ public class OrderMasterController {
 
     @Autowired
     private OrderMasterService orderMasterService;
-    //private OrderProductService orderProductService;
+
+    @Autowired
+    private OrderMasterRepository orderMasterRepository;
 
     @Autowired // 이 부분이 누락되어 있습니다.
     private OrderProductService orderProductService; // 이제 OrderProductService를 주입받아 사용할 수 있습니다.
@@ -63,6 +66,11 @@ public class OrderMasterController {
     public ResponseEntity<OrderMaster> updateOrderStatus(@PathVariable("orderNumber") Integer orderNumber, @RequestBody OrderMasterDTO orderMasterDTO) {
         OrderMaster updatedOrder = orderMasterService.updateOrderStatus(orderNumber, orderMasterDTO.getAdjustmentStatus());
         return ResponseEntity.ok(updatedOrder);
+    }
+
+    @PostMapping("/post")
+    public OrderMaster createOrder(@RequestBody OrderMaster orderMaster) {
+        return orderMasterRepository.save(orderMaster);
     }
 
 

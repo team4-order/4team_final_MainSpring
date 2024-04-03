@@ -23,4 +23,9 @@ public class InventoryTotalServiceImpl implements InventoryTotalService{
     public List<InventorySummary> getTotalSummaryByCustomerCode(String customerCode){
         return inventoryTotalRepository.findInventorySummaryByCustomerCode(customerCode);
     }
+
+    @Override
+    public List<InventoryTotal> getTotalByStorageCode(String storageCode){
+        return inventoryTotalRepository.findInventoryTotalByStorageCode(storageCode);
+    }
 }

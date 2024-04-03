@@ -29,6 +29,10 @@ public class InventoryTotalController {
         return inventoryTotalService.getTotalSummaryByCustomerCode(customerCode);
     }
 
+    @GetMapping("/storage/{storageCode}")
+    public List<InventoryTotal> getTotalByStorageCode(@PathVariable("storageCode") String storageCode){
+        return inventoryTotalService.getTotalByStorageCode(storageCode);
+    }
 
 }
 
