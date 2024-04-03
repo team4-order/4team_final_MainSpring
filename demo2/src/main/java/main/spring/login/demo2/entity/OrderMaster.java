@@ -1,6 +1,5 @@
 package main.spring.login.demo2.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -49,4 +48,9 @@ public class OrderMaster {
     @JoinColumn(name = "storage_code", referencedColumnName = "contact_code", insertable = false, updatable = false)
     private Contact storageContact;
 
+
+
+//    /// 추가
+//    @OneToMany(mappedBy = "orderMaster", fetch = FetchType.LAZY)
+//    private List<OrderProduct> orderProducts; // OrderMaster와 OrderProduct 간의 1:N 관계 설정
 }

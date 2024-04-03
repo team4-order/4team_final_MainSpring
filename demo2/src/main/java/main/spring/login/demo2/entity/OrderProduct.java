@@ -1,6 +1,5 @@
 package main.spring.login.demo2.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -42,6 +41,8 @@ public class OrderProduct {
     @ManyToOne
     @JoinColumn(name = "order_number", referencedColumnName = "order_number", insertable = false, updatable = false)
     private OrderMaster orderMaster;
+
+
 
     // Getters and Setters
 }
