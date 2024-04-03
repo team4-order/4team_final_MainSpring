@@ -1,6 +1,7 @@
 package main.spring.login.config;
 
 import jakarta.servlet.http.HttpServletRequest;
+/*import main.spring.login.jwt.GJWTFilter;*/
 import main.spring.login.jwt.GJWTFilter;
 import main.spring.login.jwt.JWTFilter;
 import main.spring.login.jwt.JWTUtil;
@@ -69,7 +70,12 @@ public class SecurityConfig {
 
                                 CorsConfiguration configuration = new CorsConfiguration();
 
-                                configuration.setAllowedOrigins(Collections.singletonList("http://localhost:8080"));
+                                /*configuration.setAllowedOrigins(Collections.singletonList("http://localhost:8080"));*/
+                                /*configuration.setAllowedOrigins(Collections.singletonList("http://localhost:8080/login"));*/
+                                /*configuration.setAllowedOrigins(Collections.singletonList("*"));*/
+                                /*configuration.setAllowedOrigins(Collections.singletonList("http://localhost:8081"));*/
+                                configuration.setAllowedOrigins(Collections.singletonList("https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=1074874386105-qlcav64d5j58f07o9aep4snpko0elgs1.apps.googleusercontent.com&scope=profile%20email&state=4hgbORAB6RerDA_0gXiu50nHKt4TUL_pJfbamrB6lM8%3D&redirect_uri=http://localhost:8081/login/"));
+                                /*configuration.setAllowedOrigins(Collections.singletonList("http://localhost:8081/login"));*/
                                 configuration.setAllowedMethods(Collections.singletonList("*"));
                                 configuration.setAllowCredentials(true);
                                 configuration.setAllowedHeaders(Collections.singletonList("*"));
@@ -91,6 +97,21 @@ public class SecurityConfig {
 
 
 
+        // google--------------------------------------------------------
+
+        http
+                .addFilterAfter(new GJWTFilter(jwtUtil), OAuth2LoginAuthenticationFilter.class);
+
+        // 구글 // 구글 jwt filter
+        http.oauth2Login((oauth2) -> oauth2
+                .userInfoEndpoint((userInfoEndpointConfig) -> userInfoEndpointConfig
+                        .userService(customOAuth2UserService))
+                .successHandler(customSuccessHandler)
+        );
+
+
+        // ---------------------------------------------------------------
+
         // 일반 jwt
         http.authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/login","/","/join").permitAll()    //login 페이지는 모두가 들어올 수 있게 해주고
@@ -103,15 +124,7 @@ public class SecurityConfig {
 
         http
                 .addFilterAt(new LogInFilter(authenticationManager(authenticationConfiguration), jwtUtil), UsernamePasswordAuthenticationFilter.class);
-        /*http
-                .addFilterBefore(new GJWTFilter(jwtUtil), OAuth2LoginAuthenticationFilter.class);*/
 
-        // 구글 // 구글 jwt filter
-       /* http.oauth2Login((oauth2) -> oauth2
-                .userInfoEndpoint((userInfoEndpointConfig) -> userInfoEndpointConfig
-                        .userService(customOAuth2UserService))
-                .successHandler(customSuccessHandler)
-        );*/
         http
                 .sessionManagement((session)-> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS));   //jwt를 사용한 로그인 방식은 항상 stateless 방식을 사용하기 때문에 설정하는 부분

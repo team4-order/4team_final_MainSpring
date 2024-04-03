@@ -43,7 +43,7 @@ public class GJWTFilter extends OncePerRequestFilter {
         //Authorization 헤더 검증
         if (authorization == null) {
 
-            System.out.println("token null");
+            System.out.println("token null ( Google JW 토큰을 찾을 수 없습니다. )");
             filterChain.doFilter(request, response);
 
             //조건이 해당되면 메소드 종료 (필수)
