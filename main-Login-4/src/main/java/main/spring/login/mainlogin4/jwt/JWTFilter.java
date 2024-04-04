@@ -1,14 +1,12 @@
-package main.spring.login.jwt;
+package main.spring.login.mainlogin4.jwt;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import main.spring.login.dto.CustomOAuth2User;
-import main.spring.login.dto.CustomUserDetails;
-import main.spring.login.dto.UserDTO;
-import main.spring.login.entity.UserEntity;
+import main.spring.login.mainlogin4.dto.CustomOAuth2User;
+import main.spring.login.mainlogin4.dto.UserDTO;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,19 +14,17 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
-public class GJWTFilter extends OncePerRequestFilter {
+public class JWTFilter extends OncePerRequestFilter {
 
     private final JWTUtil jwtUtil;
 
-    public GJWTFilter(JWTUtil jwtUtil) {
+    public JWTFilter(JWTUtil jwtUtil) {
 
         this.jwtUtil = jwtUtil;
     }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-
-
 
         //cookie들을 불러온 뒤 Authorization Key에 담긴 쿠키를 찾음
         String authorization = null;
@@ -43,9 +39,9 @@ public class GJWTFilter extends OncePerRequestFilter {
         }
 
         //Authorization 헤더 검증
-        if (authorization == null || !authorization.startsWith("Bearer ")) {
+        if (authorization == null) {
 
-            System.out.println("token null ( Google JW 토큰을 찾을 수 없습니다. )");
+            System.out.println("token null");
             filterChain.doFilter(request, response);
 
             //조건이 해당되면 메소드 종료 (필수)

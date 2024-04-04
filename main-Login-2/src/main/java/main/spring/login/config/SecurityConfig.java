@@ -11,7 +11,6 @@ import main.spring.login.service.CustomOAuth2UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -70,12 +69,7 @@ public class SecurityConfig {
 
                                 CorsConfiguration configuration = new CorsConfiguration();
 
-                                /*configuration.setAllowedOrigins(Collections.singletonList("http://localhost:8080"));*/
-                                /*configuration.setAllowedOrigins(Collections.singletonList("http://localhost:8080/login"));*/
-                                /*configuration.setAllowedOrigins(Collections.singletonList("*"));*/
-                                /*configuration.setAllowedOrigins(Collections.singletonList("http://localhost:8081"));*/
-                                configuration.setAllowedOrigins(Collections.singletonList("https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=1074874386105-qlcav64d5j58f07o9aep4snpko0elgs1.apps.googleusercontent.com&scope=profile%20email&state=4hgbORAB6RerDA_0gXiu50nHKt4TUL_pJfbamrB6lM8%3D&redirect_uri=http://localhost:8081/login/"));
-                                /*configuration.setAllowedOrigins(Collections.singletonList("http://localhost:8081/login"));*/
+                                configuration.setAllowedOrigins(Collections.singletonList("http://localhost:8081"));
                                 configuration.setAllowedMethods(Collections.singletonList("*"));
                                 configuration.setAllowCredentials(true);
                                 configuration.setAllowedHeaders(Collections.singletonList("*"));
@@ -99,13 +93,12 @@ public class SecurityConfig {
 
         // google--------------------------------------------------------
 
-        http
-                .addFilterAfter(new GJWTFilter(jwtUtil), OAuth2LoginAuthenticationFilter.class);
+       // http.addFilterBefore(new GJWTFilter(jwtUtil), OAuth2LoginAuthenticationFilter.class);
 
         // 구글 // 구글 jwt filter
         http.oauth2Login((oauth2) -> oauth2
                 .userInfoEndpoint((userInfoEndpointConfig) -> userInfoEndpointConfig
-                        .userService(customOAuth2UserService))
+                .userService(customOAuth2UserService))
                 .successHandler(customSuccessHandler)
         );
 
@@ -114,19 +107,18 @@ public class SecurityConfig {
 
         // 일반 jwt
         http.authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/login","/","/join").permitAll()    //login 페이지는 모두가 들어올 수 있게 해주고
+                        .requestMatchers("/login","/","/join","/glogin/access").permitAll()
+                        .anyRequest().authenticated());
+                        //login 페이지는 모두가 들어올 수 있게 해주고
                        // .requestMatchers("/admin").hasRole("ADMIN")             // admin은 role가 ADMIN인 사람만 들어올 수 있게 해주고
-                        .anyRequest().authenticated());// 그 외의 모든 접근은 인증이 되어야만 가능하게 설정
+                        // 그 외의 모든 접근은 인증이 되어야만 가능하게 설정
 
 
-        http
-                .addFilterBefore(new JWTFilter(jwtUtil), LogInFilter.class);
+        http.addFilterBefore(new JWTFilter(jwtUtil), LogInFilter.class);
 
-        http
-                .addFilterAt(new LogInFilter(authenticationManager(authenticationConfiguration), jwtUtil), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterAt(new LogInFilter(authenticationManager(authenticationConfiguration), jwtUtil), UsernamePasswordAuthenticationFilter.class);
 
-        http
-                .sessionManagement((session)-> session
+        http.sessionManagement((session)-> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS));   //jwt를 사용한 로그인 방식은 항상 stateless 방식을 사용하기 때문에 설정하는 부분
 
 
