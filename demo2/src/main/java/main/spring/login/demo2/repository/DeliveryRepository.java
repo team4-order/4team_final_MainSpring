@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface DeliveryRepository extends JpaRepository<Delivery, String> {
-    @Query("SELECT new main.spring.login.demo2.dto.DeliveryDetailDTO(d.deliveryNumber, d.deliveryAddress, d.deliveryArrive, d.orderNumber, " +
-            "gm.goodsName, gm.goodsCode, c.contactName) " +
+    @Query("SELECT new main.spring.login.demo2.dto.DeliveryDetailDTO(d.deliveryNumber, d.deliveryAddress, d.deliveryArrive, d.orderNumber," +
+            "gm.goodsName, gm.goodsCode, c.contactName,d.deliveryDate) " +
             "FROM Delivery d " +
             "JOIN d.orderMaster om " +
             "JOIN OrderProduct op ON om.orderNumber = op.orderMaster.orderNumber " +

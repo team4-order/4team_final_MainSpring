@@ -17,4 +17,5 @@ public class DeliveryDetailDTO {
     private String goodsName;
     private String goodsCode;
     private String contactName;
+    private LocalDateTime deliveryDate;
 }

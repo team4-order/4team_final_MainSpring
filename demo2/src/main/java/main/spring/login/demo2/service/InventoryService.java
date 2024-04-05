@@ -1,10 +1,12 @@
 package main.spring.login.demo2.service;
 
 import main.spring.login.demo2.dto.InventoryDTO;
+import main.spring.login.demo2.dto.OrderProductSummaryDTO;
 import main.spring.login.demo2.entity.GoodsMaster;
 import main.spring.login.demo2.entity.Inventory;
 import main.spring.login.demo2.repository.GoodsMasterRepository;
 import main.spring.login.demo2.repository.InventoryRepository;
+import main.spring.login.demo2.repository.OrderProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +19,17 @@ public class InventoryService {
     private final InventoryRepository inventoryRepository;
     private final GoodsMasterRepository goodsMasterRepository;
 
+    private final OrderProductRepository orderProductRepository;
+
+
+
     @Autowired
-    public InventoryService(InventoryRepository inventoryRepository ,GoodsMasterRepository goodsMasterRepository) {
+    public InventoryService(InventoryRepository inventoryRepository, GoodsMasterRepository goodsMasterRepository, OrderProductRepository orderProductRepository) {
         this.inventoryRepository = inventoryRepository;
         this.goodsMasterRepository = goodsMasterRepository;
+        this.orderProductRepository = orderProductRepository;
     }
+
 
     public List<InventoryDTO> findAll() {
         List<Inventory> inventories = inventoryRepository.findAll();
@@ -66,5 +74,11 @@ public class InventoryService {
                 .map(GoodsMaster::getGoodsName)
                 .orElse("Unknown Product");
     }
+
+
+    public List<OrderProductSummaryDTO> findOrderedProductSummaries() {
+        return orderProductRepository.findOrderedProductSummaries();
+    }
+
 
 }
