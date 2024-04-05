@@ -2,7 +2,6 @@
 
 spring 메인 레포
 
-<<<<<<< HEAD
 전승민 registerPage branch v0.1.1
 
 changes
@@ -26,4 +25,3 @@ changes
 
 
 
->>>>>>> origin
