@@ -37,7 +37,9 @@ changes
 
 4. branch registerPage/0.1.3/J
 > 0.1.2버전에서 지속되는 문제를 해결하기 위해 새로운 코드로 생성해볼 예정
+> 
 > main-Login-2 <- 메인 프로젝트
+> 
 > main-Login-3, main-Login-4, test => test용 프로젝트 실사용 x
 
 
