@@ -30,17 +30,17 @@ public class OrderMasterController {
         return orderMasterService.getOrderMastersByCustomerCode(customerCode);
     }
 
-    @GetMapping("/customer/{customerCode}/products")
-    public ResponseEntity<List<OrderProduct>> getOrderProductsByCustomerCode(@PathVariable("customerCode") String customerCode) {
-        List<OrderMaster> orderMasters = orderMasterService.getOrderMastersByCustomerCode(customerCode);
-        List<OrderProduct> orderProducts = new ArrayList<>();
-
-        for(OrderMaster orderMaster : orderMasters) {
-            orderProducts.addAll(orderProductService.getOrderProductsByOrderNumber(orderMaster.getOrderNumber()));
-        }
-
-        return ResponseEntity.ok(orderProducts);
-    }
+//    @GetMapping("/customer/{customerCode}/products")
+//    public ResponseEntity<List<OrderProduct>> getOrderProductsByCustomerCode(@PathVariable("customerCode") String customerCode) {
+//        List<OrderMaster> orderMasters = orderMasterService.getOrderMastersByCustomerCode(customerCode);
+//        List<OrderProduct> orderProducts = new ArrayList<>();
+//
+//        for(OrderMaster orderMaster : orderMasters) {
+//            orderProducts.addAll(orderProductService.getOrderProductsByOrderNumber(orderMaster.getOrderNumber()));
+//        }
+//
+//        return ResponseEntity.ok(orderProducts);
+//    }
 
     @GetMapping("/adjustment")
     public ResponseEntity<List<OrderMaster>> getAllOrderMasters() {
@@ -59,6 +59,13 @@ public class OrderMasterController {
         OrderMaster updatedOrder = orderMasterService.updateOrderStatus(orderNumber, orderMasterDTO.getAdjustmentStatus());
         return ResponseEntity.ok(updatedOrder);
     }
+
+    @GetMapping("/pendingsettlement/{customerCode}")
+    public ResponseEntity<Boolean> isPendingSettlement(@PathVariable("customerCode") String customerCode) {
+        boolean pendingSettlement = orderMasterService.isPendingSettlement(customerCode);
+        return ResponseEntity.ok(pendingSettlement);
+    }
+
 
 
 }

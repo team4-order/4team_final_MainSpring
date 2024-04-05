@@ -44,4 +44,16 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     }
 
 
+    @Override
+    public boolean isPendingSettlement(String customerCode) {
+        List<OrderMaster> orders = orderMasterRepository.findByCustomerCode(customerCode);
+        for (OrderMaster order : orders) {
+            if (order.getAdjustmentStatus().equals("미정산")||order.getAdjustmentStatus().equals("정산 예정")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }

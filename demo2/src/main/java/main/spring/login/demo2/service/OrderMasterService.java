@@ -16,4 +16,6 @@ public interface OrderMasterService {
 
     OrderMaster updateOrderStatus(Integer orderNumber, String adjustmentStatus);
 
+    boolean isPendingSettlement(String customerCode);
+
 }

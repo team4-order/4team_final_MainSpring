@@ -17,9 +17,6 @@ public interface OrderMasterRepository extends JpaRepository<OrderMaster, Intege
             "ON o.customer_code = a.contact_code", nativeQuery = true)
     List<OrderMaster> findByBusinessId(String businessId);
 
-/*    @Query(value = "Select o.* From order_master o" +
-            "INNER JOIN (SELECT contact_code From contact WHERE business_id = ?1) a" +
-            "ON o.customer_code = a.cotact_code where adjustment_status = '미정산'", nativeQuery = true)
-    List<OrderMaster> findByCustomerCode();*/
+
 
 }
