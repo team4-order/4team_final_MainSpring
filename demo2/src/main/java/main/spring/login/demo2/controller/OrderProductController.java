@@ -1,5 +1,6 @@
 package main.spring.login.demo2.controller;
 
+import main.spring.login.demo2.dto.OrderProductDto;
 import main.spring.login.demo2.entity.OrderMaster;
 import main.spring.login.demo2.entity.OrderProduct;
 import main.spring.login.demo2.repository.OrderProductRepository;
@@ -19,8 +20,8 @@ public class OrderProductController {
     private OrderProductRepository orderProductRepository;
 
     @GetMapping("/detail/{orderNumber}")
-    public List<OrderProduct> getOrderProductsByOrderNumber(@PathVariable("orderNumber") Integer orderNumber) {
-        return orderProductService.getOrderProductsByOrderNumber(orderNumber);
+    public List<OrderProductDto> getOrderProductsByOrderNumber(@PathVariable("orderNumber") Integer orderNumber) {
+        return orderProductService.getOrderDetailsByOrderNumber(orderNumber);
     }
 
     @PostMapping("/detail/post")

@@ -1,5 +1,6 @@
 package main.spring.login.demo2.controller;
 
+import main.spring.login.demo2.dto.InventoryTotalDto;
 import main.spring.login.demo2.entity.InventoryTotal;
 import main.spring.login.demo2.repository.InventorySummary;
 import main.spring.login.demo2.service.InventoryTotalService;
@@ -29,9 +30,15 @@ public class InventoryTotalController {
         return inventoryTotalService.getTotalSummaryByCustomerCode(customerCode);
     }
 
+//    @GetMapping("/storage/{storageCode}")
+//    public List<InventoryTotal> getTotalByStorageCode(@PathVariable("storageCode") String storageCode){
+//        return inventoryTotalService.getTotalByStorageCode(storageCode);
+//    }
+
+
     @GetMapping("/storage/{storageCode}")
-    public List<InventoryTotal> getTotalByStorageCode(@PathVariable("storageCode") String storageCode){
-        return inventoryTotalService.getTotalByStorageCode(storageCode);
+    public List<InventoryTotalDto> getTotalByStorageCode(@PathVariable("storageCode") String storageCode){
+        return inventoryTotalService.getInventoryTotalByStorageCode(storageCode);
     }
 
 }

@@ -22,8 +22,11 @@ public class GradePrice {
     @Column(name = "goods_code")
     private String goodsCode;
 
-    @Column(name = "input_stock", nullable = false)
-    private int inputStock;
+    @Column(name = "input_price", nullable = false)
+    private int inputPrice;
+
+    @Column(name = "margin_rate", nullable = false, columnDefinition = "5")
+    private int marginRate;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "goods_code", referencedColumnName = "goods_code", insertable = false, updatable = false)
