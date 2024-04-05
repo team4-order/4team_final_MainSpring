@@ -6,6 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
@@ -23,6 +25,8 @@ public class UserEntity {
     private String name;
     private String role;
     private String email;
+    private String NickName;
+    private String code;
 
 
 }
