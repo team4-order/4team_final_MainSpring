@@ -2,7 +2,28 @@
 
 spring 메인 레포
 
-전승민 registerPage branch v0.1.1
+
+```Dependencies
+Spring 3.2.1
+
+jpa, web
+
+jjwt package(api, impl, jackson) 0.12.3
+
+mariadb-client
+
+lombok
+
+oauth2 2.5.2.RELEASE
+
+oauth2-client 6.2.3
+
+json 21211205
+
+gson 2.10.1
+```
+
+전승민 [초기 registerPage branch v0.1.1]
 
 changes
 
