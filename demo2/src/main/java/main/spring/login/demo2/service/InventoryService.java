@@ -76,9 +76,12 @@ public class InventoryService {
     }
 
 
-    public List<OrderProductSummaryDTO> findOrderedProductSummaries() {
-        return orderProductRepository.findOrderedProductSummaries();
-    }
+//    public List<OrderProductSummaryDTO> findOrderedProductSummaries() {
+//        return orderProductRepository.findOrderedProductSummaries();
+//    }
 
+    public List<OrderProductSummaryDTO> findOrderedProductSummariesForStatus(String orderStatus) {
+        return orderProductRepository.findOrderedProductSummariesForStatus(orderStatus);
+    }
 
 }
