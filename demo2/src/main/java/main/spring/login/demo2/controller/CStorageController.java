@@ -1,6 +1,8 @@
 package main.spring.login.demo2.controller;
 
 import main.spring.login.demo2.entity.CStorage;
+import main.spring.login.demo2.entity.Contact;
+import main.spring.login.demo2.repository.ContactRepository;
 import main.spring.login.demo2.service.CStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +15,12 @@ import java.util.List;
 public class CStorageController {
 
     private final CStorageService cStorageService;
+    private final ContactRepository contactRepository; // ContactRepository를 선언합니다.
 
     @Autowired
-    public CStorageController(CStorageService cStorageService) {
+    public CStorageController(CStorageService cStorageService, ContactRepository contactRepository) { // 생성자를 통해 ContactRepository를 주입받습니다.
         this.cStorageService = cStorageService;
+        this.contactRepository = contactRepository; // 주입받은 ContactRepository를 초기화합니다.
     }
 
     @PostMapping("/addOrUpdate")
@@ -40,5 +44,10 @@ public class CStorageController {
     @GetMapping("/list")
     public List<CStorage> getAllCStorages() {
         return cStorageService.findAllCStorages();
+    }
+
+    @GetMapping("/contacts")
+    public List<Contact> getContactsByDelimiter() {
+        return contactRepository.findByContactDelimiter("C"); // ContactRepository 인스턴스를 사용하여 구분자가 "C"인 연락처를 조회합니다.
     }
 }
