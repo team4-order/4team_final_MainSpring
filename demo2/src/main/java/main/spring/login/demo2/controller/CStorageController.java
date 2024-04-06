@@ -1,9 +1,14 @@
 package main.spring.login.demo2.controller;
 
+import main.spring.login.demo2.dto.CStorageDTO;
 import main.spring.login.demo2.entity.CStorage;
+import main.spring.login.demo2.entity.Contact;
+import main.spring.login.demo2.repository.ContactRepository;
 import main.spring.login.demo2.service.CStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,10 +18,12 @@ import java.util.List;
 public class CStorageController {
 
     private final CStorageService cStorageService;
+    private final ContactRepository contactRepository;
 
     @Autowired
-    public CStorageController(CStorageService cStorageService) {
+    public CStorageController(CStorageService cStorageService, ContactRepository contactRepository) {
         this.cStorageService = cStorageService;
+        this.contactRepository = contactRepository;
     }
 
     @PostMapping("/addOrUpdate")
@@ -38,7 +45,53 @@ public class CStorageController {
     }
 
     @GetMapping("/list")
-    public List<CStorage> getAllCStorages() {
-        return cStorageService.findAllCStorages();
+    public ResponseEntity<List<CStorageDTO>> getAllCStoragesWithContactName() {
+        // 거래처 이름을 포함한 창고 목록 데이터 조회 로직 구현
+        return ResponseEntity.ok(cStorageService.findAllCStoragesWithContactName());
+    }
+
+
+
+    @PostMapping("/updateStorages/{customerCode}")
+    @Transactional
+    public ResponseEntity<?> updateCStorageList(@PathVariable String customerCode, @RequestBody List<String> storageCodes) {
+        try {
+            // 기존에 해당 거래처 코드에 할당된 모든 창고 목록을 삭제
+            cStorageService.deleteAllCStoragesByCustomerCode(customerCode);
+
+            // 새로운 창고 코드 목록으로 업데이트
+            for (String storageCode : storageCodes) {
+                cStorageService.addOrUpdateCStorage(customerCode, storageCode);
+            }
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @PostMapping("/assignStoragesToCustomer/{customerCode}")
+    @Transactional
+    public ResponseEntity<?> assignStoragesToCustomer(@PathVariable String customerCode, @RequestBody List<String> storageCodes) {
+        try {
+            // 먼저, 해당 거래처에 할당된 모든 창고를 삭제
+            cStorageService.deleteAllStoragesForCustomer(customerCode);
+
+            // 다음, 제공된 창고 코드 리스트를 해당 거래처에 할당
+            storageCodes.forEach(storageCode -> cStorageService.addOrUpdateCStorage(customerCode, storageCode));
+
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+
+    // 거래처 목록을 반환하는 엔드포인트
+    @GetMapping("/contacts")
+    public List<Contact> getContacts() {
+        // 'C' 구분자를 가진 거래처만 조회
+        return contactRepository.findByContactDelimiter("C");
     }
 }

@@ -1,5 +1,6 @@
 package main.spring.login.demo2.service;
 
+import main.spring.login.demo2.dto.CStorageDTO;
 import main.spring.login.demo2.entity.CStorage;
 import main.spring.login.demo2.entity.CStorageId;
 import main.spring.login.demo2.repository.CStorageRepository;
@@ -43,4 +44,18 @@ public class CStorageService {
         }
     }
 
+
+
+    public void deleteAllCStoragesByCustomerCode(String customerCode) {
+        cStorageRepository.deleteByCustomerCode(customerCode);
+    }
+
+    public void deleteAllStoragesForCustomer(String customerCode) {
+        cStorageRepository.deleteByCustomerCode(customerCode);
+    }
+
+
+    public List<CStorageDTO> findAllCStoragesWithContactName() {
+        return cStorageRepository.findAllCStoragesWithContactName();
+    }
 }
