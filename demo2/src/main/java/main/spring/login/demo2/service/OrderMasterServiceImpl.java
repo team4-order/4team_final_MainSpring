@@ -32,6 +32,14 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     }
 
     @Override
+    public OrderMaster findByBusinessIdAndOrderNumber(String businessId, Integer orderNumber) {
+        // 여기서는 findByBusinessIdAndOrderNumber 메서드가 구현되어야 합니다.
+        // 이 로직은 businessId로 필터링 된 주문 중 특정 orderNumber에 해당하는 주문을 찾습니다.
+        return orderMasterRepository.findByBusinessIdAndOrderNumber(businessId, orderNumber)
+                .orElseThrow(() -> new RuntimeException("해당 businessId와 orderNumber를 가진 주문을 찾을 수 없습니다."));
+    }
+
+    @Override
     public OrderMaster updateOrderStatus(Integer orderNumber, String adjustmentStatus) {
         Optional<OrderMaster> optionalOrderMaster = orderMasterRepository.findById(orderNumber);
         if (optionalOrderMaster.isPresent()) {
