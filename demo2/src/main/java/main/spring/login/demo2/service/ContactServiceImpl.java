@@ -47,6 +47,11 @@ public class ContactServiceImpl implements ContactService {
         return contacts.isEmpty() ? null : contacts.get(0);
     }
 
+    @Override
+    public Contact saveContact(Contact contact) {
+        return contactRepository.save(contact);
+    }
+
 
     @Override
     public ContactDTO saveContact(ContactDTO contactDTO) {

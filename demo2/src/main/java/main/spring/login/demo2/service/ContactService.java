@@ -16,5 +16,7 @@ public interface ContactService {
 
     Contact findByContactCode(String ContactCode);
 
+    Contact saveContact(Contact contact);
+
     ContactDTO saveContact(ContactDTO contactDTO);
 }

@@ -47,4 +47,24 @@ public class ContactController {
         return ResponseEntity.ok(customer);
     }
 
+    @PutMapping("/customer/{contactCode}")
+    public ResponseEntity<Contact> updateCustomer(@PathVariable("contactCode") String contactCode,
+                                                  @RequestBody ContactDTO updatedContactDTO) {
+        Contact existingCustomer = contactService.findByContactCode(contactCode);
+        if (existingCustomer != null) {
+            // 업데이트할 데이터 설정
+            existingCustomer.setContactName(updatedContactDTO.getContactName());
+            existingCustomer.setContactAddress(updatedContactDTO.getContactAddress());
+            existingCustomer.setCustomerPassword(updatedContactDTO.getCustomerPassword());
+            existingCustomer.setCustomerPhone(updatedContactDTO.getCustomerPhone());
+
+            // 업데이트된 고객 정보 저장
+            Contact updatedCustomer = contactService.saveContact(existingCustomer);
+
+            return ResponseEntity.ok(updatedCustomer);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }
