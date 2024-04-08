@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/orders")
@@ -73,5 +74,15 @@ public class OrderMasterController {
         return orderMasterRepository.save(orderMaster);
     }
 
+    @PutMapping("/{orderNumber}/cancel")
+    public ResponseEntity<?> cancelOrder(@PathVariable int orderNumber) {
+        orderMasterService.cancelOrder(orderNumber);
+        return ResponseEntity.ok().body("Order has been canceled successfully");
+    }
+
+    @GetMapping("/{orderNumber}")
+    public Optional<OrderMaster> getOrdersByCustomerCode(@PathVariable("orderNumber") int orderNumber) {
+        return orderMasterService.findByOrderNumber(orderNumber);
+    }
 
 }

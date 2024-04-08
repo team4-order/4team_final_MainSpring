@@ -18,5 +18,7 @@ public interface OrderMasterRepository extends JpaRepository<OrderMaster, Intege
     List<OrderMaster> findByBusinessId(String businessId);
 
 
+
+
 }
 
