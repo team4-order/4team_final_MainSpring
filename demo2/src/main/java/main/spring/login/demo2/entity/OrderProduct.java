@@ -31,9 +31,6 @@ public class OrderProduct {
     @Column(name = "goods_code", nullable = false)
     private String goodsCode;
 
-    @Column(name = "goods_name", nullable = false)
-    private String goodsName;
-
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "goods_grade", referencedColumnName = "goods_grade", insertable = false, updatable = false)
     private InventoryTotal inventoryTotalG;

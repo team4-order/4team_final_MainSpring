@@ -47,7 +47,7 @@ public class ContactController {
         return ResponseEntity.ok(customer);
     }
 
-    @PutMapping("/customer/{contactCode}")
+    @PutMapping("/customers/{contactCode}")
     public ResponseEntity<Contact> updateCustomer(@PathVariable("contactCode") String contactCode,
                                                   @RequestBody ContactDTO updatedContactDTO) {
         Contact existingCustomer = contactService.findByContactCode(contactCode);
