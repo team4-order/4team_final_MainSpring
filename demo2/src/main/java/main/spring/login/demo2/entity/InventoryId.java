@@ -9,6 +9,7 @@ public class InventoryId implements Serializable {
     private String goodsCode;
     private String goodsGrade;
 
+
     public InventoryId() {
     }
 
