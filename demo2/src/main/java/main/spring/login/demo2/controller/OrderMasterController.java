@@ -79,7 +79,7 @@ public class OrderMasterController {
         orderMasterService.cancelOrder(orderNumber);
         return ResponseEntity.ok().body("Order has been canceled successfully");
     }
-
+     
     @GetMapping("/{orderNumber}")
     public Optional<OrderMaster> getOrdersByCustomerCode(@PathVariable("orderNumber") int orderNumber) {
         return orderMasterService.findByOrderNumber(orderNumber);
