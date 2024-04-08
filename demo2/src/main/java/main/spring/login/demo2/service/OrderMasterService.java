@@ -1,6 +1,7 @@
 package main.spring.login.demo2.service;
 
 import main.spring.login.demo2.dto.OrderMasterDTO;
+import main.spring.login.demo2.dto.OrderMasterYDto;
 import main.spring.login.demo2.entity.OrderMaster;
 
 import java.util.List;
@@ -18,4 +19,6 @@ public interface OrderMasterService {
     void cancelOrder(int orderNumber);
 
     Optional<OrderMaster> findByOrderNumber(int orderNumber);
+
+    List<OrderMasterYDto> findOrderMasterDtoByBusinessId(String businessId);
 }

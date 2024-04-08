@@ -2,7 +2,9 @@ package main.spring.login.demo2.controller;
 
 
 import main.spring.login.demo2.dto.ContactDTO;
+import main.spring.login.demo2.dto.ContactYDto;
 import main.spring.login.demo2.entity.Contact;
+import main.spring.login.demo2.entity.OrderMaster;
 import main.spring.login.demo2.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,5 +43,10 @@ public class ContactController {
 //        Contact customer = contactService.findCustomerByCode(contactCode);
 //        return ResponseEntity.ok(customer);
 //    }
+
+    @GetMapping("/busId/{businessId}")
+    public List<ContactYDto> findContactNameByBusinessId(@PathVariable("businessId") String businessId) {
+        return contactService.findContactNameByBusinessId(businessId);
+    }
 
 }

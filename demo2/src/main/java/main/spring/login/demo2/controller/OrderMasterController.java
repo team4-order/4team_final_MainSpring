@@ -1,6 +1,7 @@
 package main.spring.login.demo2.controller;
 
 import main.spring.login.demo2.dto.OrderMasterDTO;
+import main.spring.login.demo2.dto.OrderMasterYDto;
 import main.spring.login.demo2.entity.Contact;
 import main.spring.login.demo2.entity.OrderMaster;
 import main.spring.login.demo2.entity.OrderProduct;
@@ -84,5 +85,12 @@ public class OrderMasterController {
     public Optional<OrderMaster> getOrdersByCustomerCode(@PathVariable("orderNumber") int orderNumber) {
         return orderMasterService.findByOrderNumber(orderNumber);
     }
+
+    @GetMapping("/busId/{businessId}")
+    public List<OrderMasterYDto> getOrderDtoByBusinessId(@PathVariable("businessId") String businessId) {
+        return orderMasterService.findOrderMasterDtoByBusinessId(businessId);
+    }
+
+
 
 }
