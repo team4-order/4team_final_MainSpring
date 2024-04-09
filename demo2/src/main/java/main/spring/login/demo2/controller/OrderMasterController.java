@@ -1,5 +1,6 @@
 package main.spring.login.demo2.controller;
 
+import main.spring.login.demo2.dto.ContactYDto;
 import main.spring.login.demo2.dto.OrderMasterDTO;
 import main.spring.login.demo2.dto.OrderMasterYDto;
 import main.spring.login.demo2.entity.Contact;
@@ -105,5 +106,14 @@ public class OrderMasterController {
         return orderMasterService.findByStorageCode(storageCode);
     }
 
+    @GetMapping("/pendingsettlement/{customerCode}")
+    public ResponseEntity<Boolean> isPendingSettlement(@PathVariable("customerCode") String customerCode) {
+        boolean pendingSettlement = orderMasterService.isPendingSettlement(customerCode);
+        return ResponseEntity.ok(pendingSettlement);
+    }
 
+    @GetMapping("/req/{businessId}")
+    public List<ContactYDto> findStatusByBusinessId(@PathVariable("businessId") String businessId) {
+        return orderMasterService.findStatusByBusinessId(businessId);
+    }
 }

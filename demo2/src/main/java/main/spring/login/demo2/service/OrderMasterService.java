@@ -1,5 +1,6 @@
 package main.spring.login.demo2.service;
 
+import main.spring.login.demo2.dto.ContactYDto;
 import main.spring.login.demo2.dto.OrderMasterDTO;
 import main.spring.login.demo2.dto.OrderMasterYDto;
 import main.spring.login.demo2.entity.OrderMaster;
@@ -11,9 +12,6 @@ public interface OrderMasterService {
     List<OrderMaster> getOrderMastersByCustomerCode(String customerCode);
 
     List<OrderMaster> findAllOrderMaster();
-
-    List<OrderMaster> findByBusinessId(String businessId);
-    //기업ID에 따라 다른 정보 보여주는 것
 
     OrderMaster findByBusinessIdAndOrderNumber(String businessId, Integer orderNumber);
     //특정 기업의 특정 주문번호의 정보 보여주는 것
@@ -31,4 +29,6 @@ public interface OrderMasterService {
     List<OrderMasterYDto> findOrderMasterDtoByBusinessId(String businessId);
 
     List<OrderMaster> findByStorageCode(String storageCode);
+
+    List<ContactYDto> findStatusByBusinessId(String businessId);
 }

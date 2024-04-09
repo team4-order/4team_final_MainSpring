@@ -1,5 +1,7 @@
 package main.spring.login.demo2.service;
 
+import main.spring.login.demo2.dto.ContactYDto;
+import main.spring.login.demo2.dto.OrderMasterDTO;
 import main.spring.login.demo2.dto.OrderMasterYDto;
 import main.spring.login.demo2.entity.OrderMaster;
 import main.spring.login.demo2.repository.OrderMasterRepository;
@@ -64,6 +66,11 @@ public class OrderMasterServiceImpl implements OrderMasterService {
             }
         }
         return false;
+    }
+
+    @Override
+    public List<ContactYDto> findStatusByBusinessId(String businessId) {
+        return orderMasterRepository.findStatusByBusinessId(businessId);
     }
 
 
