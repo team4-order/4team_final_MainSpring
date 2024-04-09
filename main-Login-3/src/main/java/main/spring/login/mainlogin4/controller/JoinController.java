@@ -18,7 +18,7 @@ public class JoinController {
     }
 
     @PostMapping("/join")
-    public String joinProcess(JoinDTO joinDTO) {
+    public String joinProcess(JoinDTO joinDTO) throws Exception {
 
         System.out.println(joinDTO.getUsername());
         joinService.joinProcess(joinDTO);
