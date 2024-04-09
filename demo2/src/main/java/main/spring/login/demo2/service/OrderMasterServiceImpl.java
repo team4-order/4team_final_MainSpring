@@ -32,10 +32,6 @@ public class OrderMasterServiceImpl implements OrderMasterService {
         return orderMasterRepository.findAll();
     }
 
-    @Override
-    public List<OrderMaster> findByBusinessId(String businessId){
-        return orderMasterRepository.findByBusinessId(businessId);
-    }
 
     @Override
     public OrderMaster findByBusinessIdAndOrderNumber(String businessId, Integer orderNumber) {
