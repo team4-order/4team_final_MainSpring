@@ -10,7 +10,13 @@ public interface ContactService {
 //
 //    Contact findCustomerByCode(String customerCode);
 
-    List<Contact> findAllCustomers();// 'C' delimiter를 가진 모든 연락처(고객) 정보 조회
+    List<Contact> findByBusinessIdC(String businessId);// 'C' delimiter를 가진 모든 연락처(고객) 정보 조회
+
+    List<Contact> findAllSCustomers();
+
+    Contact findByContactCode(String ContactCode);
+
+    Contact saveContact(Contact contact);
 
     ContactDTO saveContact(ContactDTO contactDTO);
 }

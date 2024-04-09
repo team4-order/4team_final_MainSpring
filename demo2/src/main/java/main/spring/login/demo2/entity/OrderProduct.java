@@ -40,7 +40,7 @@ public class OrderProduct {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "goods_code", referencedColumnName = "goods_code", insertable=false, updatable=false)
     private InventoryTotal inventoryTotalC;
-//
+
     @ManyToOne
     @JoinColumn(name = "order_number", referencedColumnName = "order_number", insertable = false, updatable = false)
     private OrderMaster orderMaster;
