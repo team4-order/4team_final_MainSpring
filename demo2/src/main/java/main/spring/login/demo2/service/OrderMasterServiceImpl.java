@@ -1,5 +1,6 @@
 package main.spring.login.demo2.service;
 
+import main.spring.login.demo2.dto.OrderMasterYDto;
 import main.spring.login.demo2.entity.OrderMaster;
 import main.spring.login.demo2.repository.OrderMasterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,5 +82,15 @@ public class OrderMasterServiceImpl implements OrderMasterService {
 
     public Optional<OrderMaster> findByOrderNumber(int orderNumber){
         return orderMasterRepository.findById(orderNumber);
+    }
+
+    @Override
+    public List<OrderMasterYDto> findOrderMasterDtoByBusinessId(String businessId){
+        return orderMasterRepository.findOrderMasterDtoByBusinessId(businessId);
+    }
+
+    @Override
+    public List<OrderMaster> findByStorageCode(String storageCode){
+        return orderMasterRepository.findByStorageCode(storageCode);
     }
 }

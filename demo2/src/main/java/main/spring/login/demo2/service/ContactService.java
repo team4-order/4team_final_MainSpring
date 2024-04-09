@@ -1,6 +1,7 @@
 package main.spring.login.demo2.service;
 
 import main.spring.login.demo2.dto.ContactDTO;
+import main.spring.login.demo2.dto.ContactYDto;
 import main.spring.login.demo2.entity.Contact;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface ContactService {
     Contact saveContact(Contact contact);
 
     ContactDTO saveContact(ContactDTO contactDTO);
+
+    List<ContactYDto> findContactNameByBusinessId(String businessId);
 }

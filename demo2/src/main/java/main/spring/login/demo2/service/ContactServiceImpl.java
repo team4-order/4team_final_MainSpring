@@ -2,6 +2,7 @@ package main.spring.login.demo2.service;
 
 import jakarta.transaction.Transactional;
 import main.spring.login.demo2.dto.ContactDTO;
+import main.spring.login.demo2.dto.ContactYDto;
 import main.spring.login.demo2.entity.Contact;
 import main.spring.login.demo2.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +79,11 @@ public class ContactServiceImpl implements ContactService {
 //
 //        return selectedFields;
 //    }
+
+    @Override
+    public List<ContactYDto> findContactNameByBusinessId(String businessId){
+        return contactRepository.findContactNameByBusinessId(businessId);
+    }
 
 
 }
