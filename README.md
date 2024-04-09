@@ -3,6 +3,7 @@ m_final_MainSpring
 spring 메인 레포
 
 
+
 ## Dependencies
 ```
 Spring 3.2.1
@@ -46,6 +47,11 @@ changes
 ---------------------------------------------------------
 
 구현 로그인 기능 (24-04-05)
+
+| git 컨벤션 규칙 |
+|----------------|
+|[WIKI](https://github.com/team4-order/team4-main/wiki/%EC%BB%A8%EB%B2%A4%EC%85%98-%EA%B7%9C%EC%B9%99)|
+
 
 1. jwt 발급을 통한 로그인 기능
 2. 소셜 로그인을 통한 로그인 기능
