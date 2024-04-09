@@ -49,6 +49,7 @@ public class ContactController {
         return ResponseEntity.ok(customer);
     }
 
+    //고객 정보 수정하는 기능
     @PutMapping("/customers/{contactCode}")
     public ResponseEntity<Contact> updateCustomer(@PathVariable("contactCode") String contactCode,
                                                   @RequestBody ContactDTO updatedContactDTO) {

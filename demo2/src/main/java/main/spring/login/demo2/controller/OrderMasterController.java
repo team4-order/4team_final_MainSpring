@@ -63,6 +63,12 @@ public class OrderMasterController {
         List<OrderMaster> orderMasters = orderMasterService.findAllOrderMaster();
         return ResponseEntity.ok(orderMasters);
     }
+    
+    @GetMapping("/pendingsettlement/{customerCode}")
+    public ResponseEntity<Boolean> isPendingSettlement(@PathVariable("customerCode") String customerCode) {
+        boolean pendingSettlement = orderMasterService.isPendingSettlement(customerCode);
+        return ResponseEntity.ok(pendingSettlement);
+    }
 
     // 특정 businessId의 orderNumber에 해당하는 주문을 가져오는 엔드포인트
     @GetMapping("/id/{businessId}/{orderNumber}")
