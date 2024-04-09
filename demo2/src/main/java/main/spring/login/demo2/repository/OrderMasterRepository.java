@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface OrderMasterRepository extends JpaRepository<OrderMaster, Integer> {
     List<OrderMaster> findByCustomerCode(String customerCode);
@@ -29,6 +30,10 @@ public interface OrderMasterRepository extends JpaRepository<OrderMaster, Intege
             "ON o.customerCode = c.contactCode WHERE c.businessId = :businessId")
     List<OrderMasterYDto> findOrderMasterDtoByBusinessId(@Param("businessId") String businessId);
 
+    @Query(value = "SELECT o.* FROM order_master o " +
+            "INNER JOIN (SELECT contact_code FROM contact WHERE business_id = ?1) a " +
+            "ON o.customer_code = a.contact_code AND order_number = ?2", nativeQuery = true)
+    Optional<OrderMaster> findByBusinessIdAndOrderNumber(String businessId, Integer orderNumber);
 
     List<OrderMaster> findByStorageCode(String storageCode);
 }
