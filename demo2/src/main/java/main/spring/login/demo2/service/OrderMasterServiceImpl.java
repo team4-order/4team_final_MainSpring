@@ -33,11 +33,6 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     }
 
     @Override
-    public List<OrderMaster> findByBusinessId(String businessId){
-        return orderMasterRepository.findByBusinessId(businessId);
-    }
-
-    @Override
     public OrderMaster findByBusinessIdAndOrderNumber(String businessId, Integer orderNumber) {
         // 여기서는 findByBusinessIdAndOrderNumber 메서드가 구현되어야 합니다.
         // 이 로직은 businessId로 필터링 된 주문 중 특정 orderNumber에 해당하는 주문을 찾습니다.

@@ -22,8 +22,6 @@ public interface OrderMasterService {
 
     boolean isPendingSettlement(String customerCode);
 
-    List<OrderMaster> findByBusinessId(String businessId);
-
     void cancelOrder(int orderNumber);
 
     Optional<OrderMaster> findByOrderNumber(int orderNumber);

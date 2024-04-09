@@ -64,12 +64,6 @@ public class OrderMasterController {
         return ResponseEntity.ok(orderMasters);
     }
 
-    //business id 에 따른 주문 목록
-    @GetMapping("/id/{businessId}")
-    public List<OrderMaster> getOrdersByBusinessId(@PathVariable("businessId") String businessId) {
-        return orderMasterService.findByBusinessId(businessId);
-    }
-
     // 특정 businessId의 orderNumber에 해당하는 주문을 가져오는 엔드포인트
     @GetMapping("/id/{businessId}/{orderNumber}")
     public ResponseEntity<OrderMaster> getOrderByIdAndOrderNumber(
