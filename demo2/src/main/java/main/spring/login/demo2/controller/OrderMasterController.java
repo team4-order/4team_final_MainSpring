@@ -91,6 +91,10 @@ public class OrderMasterController {
         return orderMasterService.findOrderMasterDtoByBusinessId(businessId);
     }
 
+    @GetMapping("/sc/{storageCode}")
+    public List<OrderMaster> getOrderByStorageCode(@PathVariable("storageCode") String storageCode) {
+        return orderMasterService.findByStorageCode(storageCode);
+    }
 
 
 }

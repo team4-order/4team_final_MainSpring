@@ -30,7 +30,6 @@ public interface OrderMasterRepository extends JpaRepository<OrderMaster, Intege
     List<OrderMasterYDto> findOrderMasterDtoByBusinessId(@Param("businessId") String businessId);
 
 
-
-
+    List<OrderMaster> findByStorageCode(String storageCode);
 }
 

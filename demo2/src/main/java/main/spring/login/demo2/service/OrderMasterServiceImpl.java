@@ -63,4 +63,9 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     public List<OrderMasterYDto> findOrderMasterDtoByBusinessId(String businessId){
         return orderMasterRepository.findOrderMasterDtoByBusinessId(businessId);
     }
+
+    @Override
+    public List<OrderMaster> findByStorageCode(String storageCode){
+        return orderMasterRepository.findByStorageCode(storageCode);
+    }
 }

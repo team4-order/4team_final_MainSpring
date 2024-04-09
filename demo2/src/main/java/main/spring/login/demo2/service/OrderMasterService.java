@@ -21,4 +21,6 @@ public interface OrderMasterService {
     Optional<OrderMaster> findByOrderNumber(int orderNumber);
 
     List<OrderMasterYDto> findOrderMasterDtoByBusinessId(String businessId);
+
+    List<OrderMaster> findByStorageCode(String storageCode);
 }
