@@ -1,10 +1,10 @@
 package main.spring.login.demo2.service;
 
-import main.spring.login.demo2.dto.OrderMasterDTO;
 import main.spring.login.demo2.entity.OrderMaster;
 import main.spring.login.demo2.repository.OrderMasterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +19,11 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     @Override
     public List<OrderMaster> getOrderMastersByCustomerCode(String customerCode) {
         return orderMasterRepository.findByCustomerCode(customerCode);
+    }
+
+    @Override
+    public List<OrderMaster> findByBusinessId(String businessId){
+        return orderMasterRepository.findByBusinessId(businessId);
     }
 
     @Override
@@ -65,4 +70,16 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     }
 
 
+    @Transactional
+    public void cancelOrder(int orderNumber) {
+        orderMasterRepository.findById(orderNumber).ifPresent(orderMaster -> {
+            orderMaster.setOrderStatus("주문 취소");
+            orderMaster.setAdjustmentStatus("주문 취소");
+            orderMasterRepository.save(orderMaster);
+        });
+    }
+
+    public Optional<OrderMaster> findByOrderNumber(int orderNumber){
+        return orderMasterRepository.findById(orderNumber);
+    }
 }

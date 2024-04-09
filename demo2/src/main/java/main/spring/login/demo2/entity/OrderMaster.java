@@ -32,6 +32,11 @@ public class OrderMaster {
     @Column(name = "adjustment_status", nullable = false)
     private String adjustmentStatus;
 
+    @ColumnDefault("주문 완료")
+    @Column(name = "order_status", nullable = false)
+    private String orderStatus;
+
+    @ColumnDefault("0")
     @Column(name = "order_price", nullable = false)
     private int orderPrice;
 
