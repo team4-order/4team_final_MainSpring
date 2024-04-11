@@ -18,7 +18,7 @@ public interface OrderProductRepository extends JpaRepository<OrderProduct, Inte
 
     //OrderProductYDto(Integer orderNumber, String goodsCode, String goodsGrade, Integer orderQuantity, String orderStatus, String storageCode)
     @Query("SELECT new main.spring.login.demo2.dto.OrderProductYDto(op.orderNumber, op.goodsCode, op.goodsGrade, op.orderQuantity, om.orderStatus, om.storageCode)" +
-            "FROM OrderMaster om RIGHT OUTER JOIN OrderProduct op ON om.orderNumber = op.orderNumber WHERE om.storageCode = :storageCode AND om.orderStatus = '출고 준비 중' ")
+            "FROM OrderMaster om RIGHT OUTER JOIN OrderProduct op ON om.orderNumber = op.orderNumber WHERE om.storageCode = :storageCode AND (om.orderStatus = '출고 준비 중' OR om.orderStatus = '주문 완료')")
     List<OrderProductYDto> findOrderProductByStorageCode(@Param("storageCode") String storageCode);
 
 
