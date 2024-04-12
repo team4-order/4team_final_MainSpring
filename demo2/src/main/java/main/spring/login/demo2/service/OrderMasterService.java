@@ -1,8 +1,6 @@
 package main.spring.login.demo2.service;
 
-import main.spring.login.demo2.dto.ContactYDto;
-import main.spring.login.demo2.dto.OrderMasterDTO;
-import main.spring.login.demo2.dto.OrderMasterYDto;
+import main.spring.login.demo2.dto.*;
 import main.spring.login.demo2.entity.OrderMaster;
 
 import java.util.List;
@@ -31,4 +29,10 @@ public interface OrderMasterService {
     List<OrderMaster> findByStorageCode(String storageCode);
 
     List<ContactYDto> findStatusByBusinessId(String businessId);
+
+    List<Chart1Dto> getTotalOrderPriceByBusId(String businessId);
+
+    List<ContactYDto> findCusByBusinessId(String businessId);
+
+    List<Chart2Dto> findOrderCntByCustomerCode(String customerCode);
 }

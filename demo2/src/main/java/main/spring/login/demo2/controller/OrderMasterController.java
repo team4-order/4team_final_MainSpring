@@ -1,8 +1,6 @@
 package main.spring.login.demo2.controller;
 
-import main.spring.login.demo2.dto.ContactYDto;
-import main.spring.login.demo2.dto.OrderMasterDTO;
-import main.spring.login.demo2.dto.OrderMasterYDto;
+import main.spring.login.demo2.dto.*;
 import main.spring.login.demo2.entity.Contact;
 import main.spring.login.demo2.entity.OrderMaster;
 import main.spring.login.demo2.entity.OrderProduct;
@@ -116,4 +114,20 @@ public class OrderMasterController {
     public List<ContactYDto> findStatusByBusinessId(@PathVariable("businessId") String businessId) {
         return orderMasterService.findStatusByBusinessId(businessId);
     }
+
+    @GetMapping("/chart1/{businessId}")
+    public List<Chart1Dto> getTotalOrderPriceByBusId(@PathVariable("businessId") String businessId) {
+        return orderMasterService.getTotalOrderPriceByBusId(businessId);
+    }
+
+    @GetMapping("/chart2/{businessId}")
+    public List<ContactYDto> findCusByBusinessId(@PathVariable("businessId") String businessId) {
+        return orderMasterService.findCusByBusinessId(businessId);
+    }
+
+    @GetMapping("/chart3/{customerCode}")
+    public List<Chart2Dto> findOrderCntByCustomerCode(@PathVariable("customerCode") String customerCode) {
+        return orderMasterService.findOrderCntByCustomerCode(customerCode);
+    }
+
 }

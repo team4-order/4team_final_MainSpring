@@ -1,14 +1,13 @@
 package main.spring.login.demo2.service;
 
-import main.spring.login.demo2.dto.ContactYDto;
-import main.spring.login.demo2.dto.OrderMasterDTO;
-import main.spring.login.demo2.dto.OrderMasterYDto;
+import main.spring.login.demo2.dto.*;
 import main.spring.login.demo2.entity.OrderMaster;
 import main.spring.login.demo2.repository.OrderMasterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -95,5 +94,21 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     @Override
     public List<OrderMaster> findByStorageCode(String storageCode){
         return orderMasterRepository.findByStorageCode(storageCode);
+    }
+
+    @Override
+    public List<Chart1Dto> getTotalOrderPriceByBusId(String businessId) {
+        LocalDate lastYear = LocalDate.now().minusYears(1); // Get the date from one year ago
+        return orderMasterRepository.getTotalOrderPriceByBusId(businessId, lastYear);
+    }
+
+    @Override
+    public List<ContactYDto> findCusByBusinessId(String businessId) {
+        return  orderMasterRepository.findCusByBusinessId(businessId);
+    }
+
+    @Override
+    public List<Chart2Dto> findOrderCntByCustomerCode(String customerCode) {
+        return orderMasterRepository.findOrderCntByCustomerCode(customerCode);
     }
 }
