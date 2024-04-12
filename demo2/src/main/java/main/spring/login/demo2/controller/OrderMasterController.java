@@ -13,9 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/orders")
@@ -76,6 +75,12 @@ public class OrderMasterController {
             @PathVariable("businessId") String businessId,
             @PathVariable("orderNumber") Integer orderNumber) {
         return ResponseEntity.ok(orderMasterService.findByBusinessIdAndOrderNumber(businessId, orderNumber));
+    }
+
+    // 현재 달에 해당하는 특정 코드와 같은 데이터를 모두 검색하고, 그 중에서 '미정산' 상태와 '정산 완료' 상태의 주문 개수를 계산
+    @GetMapping("/{customerContact}/count")
+    public ResponseEntity<Map<String, Integer>> getOrderCountByCurrentMonthAndCustomerContact(@PathVariable String customerContact) {
+        return ResponseEntity.ok(orderMasterService.countOrderStatusByCurrentMonth(customerContact));
     }
 
     @PutMapping("/adjustment/{orderNumber}") //정산 상태 바뀐 것 받아오는 controller

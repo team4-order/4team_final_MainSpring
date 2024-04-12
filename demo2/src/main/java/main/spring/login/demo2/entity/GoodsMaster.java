@@ -20,12 +20,6 @@ public class GoodsMaster {
     @Column(name = "goods_name", nullable = false)
     private String goodsName;
 
-    @Column(name = "margin_rate", nullable = false)
-    private int marginRate;
-
-    @Column(name = "discount_rate", nullable = false)
-    private int discountRate;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "business_id", nullable = false)
     private Business business;
