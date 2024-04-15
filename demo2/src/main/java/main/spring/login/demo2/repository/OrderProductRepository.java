@@ -22,4 +22,18 @@ public interface OrderProductRepository extends JpaRepository<OrderProduct, Inte
     List<OrderProductYDto> findOrderProductByStorageCode(@Param("storageCode") String storageCode);
 
 
+    //인벤토리에서 나갈 재고
+//    @Query("SELECT new main.spring.login.demo2.dto.OrderProductSummaryDTO(op.goodsCode, SUM(op.orderQuantity)) " +
+//            "FROM OrderProduct op " +
+//            "GROUP BY op.goodsCode")
+//    List<OrderProductSummaryDTO> findOrderedProductSummaries();
+
+
+    @Query("SELECT new main.spring.login.demo2.dto.OrderProductSummaryDTO(op.goodsCode, SUM(op.orderQuantity)) " +
+            "FROM OrderProduct op " +
+            "JOIN op.orderMaster om " +
+            "WHERE om.orderStatus = :orderStatus " +
+            "GROUP BY op.goodsCode")
+    List<OrderProductSummaryDTO> findOrderedProductSummariesForStatus(@Param("orderStatus") String orderStatus);
+
 }
