@@ -3,7 +3,9 @@ package main.spring.login.demo2.service;
 import main.spring.login.demo2.dto.*;
 import main.spring.login.demo2.entity.OrderMaster;
 
+import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface OrderMasterService {
@@ -18,7 +20,7 @@ public interface OrderMasterService {
 
     boolean isPendingSettlement(String customerCode);
 
-    List<OrderMaster> findByBusinessId(String businessId);
+    Map<String, Integer> countOrderStatusByCurrentMonth(String customerContact);
 
     void cancelOrder(int orderNumber);
 

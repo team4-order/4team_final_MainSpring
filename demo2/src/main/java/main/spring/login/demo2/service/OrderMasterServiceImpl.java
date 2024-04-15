@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -71,6 +74,25 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     public List<ContactYDto> findStatusByBusinessId(String businessId) {
         return orderMasterRepository.findStatusByBusinessId(businessId);
     }
+
+    @Override
+    public Map<String, Integer> countOrderStatusByCurrentMonth(String customerContact) {
+        LocalDate currentDate = LocalDate.now();
+        LocalDate startDate = currentDate.withDayOfMonth(1); // 현재 달의 시작일
+        LocalDate endDate = currentDate.withDayOfMonth(currentDate.lengthOfMonth()); // 현재 달의 마지막 날
+
+        int unadjustedCount = orderMasterRepository.countByDateAndCustomerContactAndStatus(startDate, endDate, customerContact, "미정산");
+        int settledCount = orderMasterRepository.countByDateAndCustomerContactAndStatus(startDate, endDate, customerContact, "정산 완료");
+        int requestCount = orderMasterRepository.countByDateAndCustomerContactAndStatus(startDate, endDate, customerContact, "정산 요청");
+        
+        Map<String, Integer> result = new HashMap<>();
+        result.put("미정산", unadjustedCount);
+        result.put("정산 완료", settledCount);
+        result.put("정산 요청", requestCount);
+
+        return result;
+    }
+
 
 
     @Transactional
