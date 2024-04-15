@@ -1,6 +1,7 @@
 package main.spring.login.demo2.repository;
 
 import main.spring.login.demo2.dto.OrderProductDto;
+import main.spring.login.demo2.dto.OrderProductSummaryDTO;
 import main.spring.login.demo2.dto.OrderProductYDto;
 import main.spring.login.demo2.entity.OrderProduct;
 import org.springframework.data.jpa.repository.JpaRepository;

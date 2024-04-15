@@ -6,6 +6,7 @@ import main.spring.login.demo2.entity.GoodsMaster;
 import main.spring.login.demo2.entity.Inventory;
 import main.spring.login.demo2.repository.GoodsMasterRepository;
 import main.spring.login.demo2.repository.InventoryRepository;
+import main.spring.login.demo2.repository.OrderProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

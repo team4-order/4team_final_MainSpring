@@ -1,6 +1,7 @@
 package main.spring.login.demo2.service;
 
 import main.spring.login.demo2.entity.CStorage;
+import main.spring.login.demo2.repository.CStorageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

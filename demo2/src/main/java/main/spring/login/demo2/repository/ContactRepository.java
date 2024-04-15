@@ -23,8 +23,8 @@ public interface ContactRepository extends JpaRepository<Contact, String> {
     List<Contact> findByContactCode(String contactCode);
 
 
-    // 구분자가 'C'인 거래처 목록을 조회하는 메소드 민성
-    List<Contact> findByContactDelimiter1(String delimiter);
+//    // 구분자가 'C'인 거래처 목록을 조회하는 메소드 민성
+//    List<Contact> findByContactD(String delimiter);
 
 
     @Query("SELECT new main.spring.login.demo2.dto.ContactYDto(contactName, contactCode)" +

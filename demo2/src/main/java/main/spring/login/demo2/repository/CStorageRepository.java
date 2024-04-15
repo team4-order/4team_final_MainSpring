@@ -13,6 +13,7 @@ import java.util.List;
 @Repository
 public interface CStorageRepository extends JpaRepository<CStorage, CStorageId> {
 
+    List<CStorage> findAllByCustomerCode(String customerCode);
     @Transactional
     void deleteByCustomerCode(String customerCode);
 
