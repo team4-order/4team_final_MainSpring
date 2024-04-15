@@ -7,10 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-<<<<<<< HEAD
-=======
 import java.sql.Date;
->>>>>>> origin/dev1/0.2.1
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -60,7 +57,7 @@ public interface OrderMasterRepository extends JpaRepository<OrderMaster, Intege
             "GROUP BY EXTRACT(YEAR FROM o.orderDate), EXTRACT(MONTH FROM o.orderDate) " +
             "ORDER BY year, month")
     List<Chart2Dto> findOrderCntByCustomerCode(String customerCode);
-}
+
 
     @Query("SELECT COUNT(o) FROM OrderMaster o WHERE o.orderDate BETWEEN :startDate AND :endDate AND o.customerCode = :customerContact AND o.adjustmentStatus = :status")
     int countByDateAndCustomerContactAndStatus(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate, @Param("customerContact") String customerContact, @Param("status") String status);
