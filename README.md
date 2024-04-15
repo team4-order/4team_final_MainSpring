@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 m_final_MainSpring
 
 spring 메인 레포
+=======
+# 4team_final_MainSpring
+spring 메인 레포!!
+
+>>>>>>> c66e738dff68eaf9eeb463527fe00f1e25000fd3
 
 
+<<<<<<< HEAD
 ## Dependencies
 ```
 Spring 3.2.1
@@ -41,6 +48,11 @@ changes
 > main-Login-2 <- 메인 프로젝트
 > 
 > main-Login-3, main-Login-4, test => test용 프로젝트 실사용 x
+=======
+| git 컨벤션 규칙 |
+|----------------|
+|[WIKI](https://github.com/team4-order/team4-main/wiki/%EC%BB%A8%EB%B2%A4%EC%85%98-%EA%B7%9C%EC%B9%99)|
+>>>>>>> c66e738dff68eaf9eeb463527fe00f1e25000fd3
 
 
 ---------------------------------------------------------
