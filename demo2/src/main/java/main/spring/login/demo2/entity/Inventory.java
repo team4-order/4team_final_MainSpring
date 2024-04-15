@@ -33,7 +33,7 @@ public class Inventory {
     private String goodsGrade;
 
     @Column(name = "current_grade", nullable = false, length = 2)
-    private String current_grade;
+    private String currentgrade;
 
     @Column(name = "inventory_quantity", nullable = false, columnDefinition = "MEDIUMTEXT")
     private String inventoryQuantity;
