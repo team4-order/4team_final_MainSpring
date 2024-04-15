@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 
 @Table(name = "inventory")
 @Entity
@@ -75,6 +77,7 @@ public class Inventory {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "goods_code", referencedColumnName = "goods_code", insertable = false, updatable = false)
     private GoodsMaster goodsMaster;
+
 
 
 }
