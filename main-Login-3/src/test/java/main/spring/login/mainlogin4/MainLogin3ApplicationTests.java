@@ -1,13 +1,13 @@
-package main.spring.login.demo2;
+package main.spring.login.mainlogin4;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Demo2ApplicationTests {
+class MainLogin3ApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+	@Test
+	void contextLoads() {
+	}
 
 }
