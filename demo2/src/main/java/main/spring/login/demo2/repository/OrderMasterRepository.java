@@ -47,7 +47,7 @@ public interface OrderMasterRepository extends JpaRepository<OrderMaster, Intege
             "INNER JOIN (SELECT contact_code FROM contact WHERE business_id = ?1) a " +
             "ON o.customer_code = a.contact_code AND order_number = ?2", nativeQuery = true)
     Optional<OrderMaster> findByBusinessIdAndOrderNumber(String businessId, Integer orderNumber);
-   
+
     List<OrderMaster> findByStorageCode(String storageCode);
 
     @Query("SELECT new main.spring.login.demo2.dto.Chart2Dto(EXTRACT(YEAR FROM o.orderDate) AS year, EXTRACT(MONTH FROM o.orderDate) AS month, COUNT(o)) " +
