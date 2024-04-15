@@ -1,7 +1,6 @@
 package main.spring.login.demo2.controller;
 
-import main.spring.login.demo2.dto.OrderMasterDTO;
-import main.spring.login.demo2.dto.OrderMasterYDto;
+import main.spring.login.demo2.dto.*;
 import main.spring.login.demo2.entity.Contact;
 import main.spring.login.demo2.entity.OrderMaster;
 import main.spring.login.demo2.entity.OrderProduct;
@@ -62,12 +61,7 @@ public class OrderMasterController {
         List<OrderMaster> orderMasters = orderMasterService.findAllOrderMaster();
         return ResponseEntity.ok(orderMasters);
     }
-    
-    @GetMapping("/pendingsettlement/{customerCode}")
-    public ResponseEntity<Boolean> isPendingSettlement(@PathVariable("customerCode") String customerCode) {
-        boolean pendingSettlement = orderMasterService.isPendingSettlement(customerCode);
-        return ResponseEntity.ok(pendingSettlement);
-    }
+
 
     // 특정 businessId의 orderNumber에 해당하는 주문을 가져오는 엔드포인트
     @GetMapping("/id/{businessId}/{orderNumber}")
@@ -115,5 +109,30 @@ public class OrderMasterController {
         return orderMasterService.findByStorageCode(storageCode);
     }
 
+    @GetMapping("/pendingsettlement/{customerCode}")
+    public ResponseEntity<Boolean> isPendingSettlement(@PathVariable("customerCode") String customerCode) {
+        boolean pendingSettlement = orderMasterService.isPendingSettlement(customerCode);
+        return ResponseEntity.ok(pendingSettlement);
+    }
+
+    @GetMapping("/req/{businessId}")
+    public List<ContactYDto> findStatusByBusinessId(@PathVariable("businessId") String businessId) {
+        return orderMasterService.findStatusByBusinessId(businessId);
+    }
+
+    @GetMapping("/chart1/{businessId}")
+    public List<Chart1Dto> getTotalOrderPriceByBusId(@PathVariable("businessId") String businessId) {
+        return orderMasterService.getTotalOrderPriceByBusId(businessId);
+    }
+
+    @GetMapping("/chart2/{businessId}")
+    public List<ContactYDto> findCusByBusinessId(@PathVariable("businessId") String businessId) {
+        return orderMasterService.findCusByBusinessId(businessId);
+    }
+
+    @GetMapping("/chart3/{customerCode}")
+    public List<Chart2Dto> findOrderCntByCustomerCode(@PathVariable("customerCode") String customerCode) {
+        return orderMasterService.findOrderCntByCustomerCode(customerCode);
+    }
 
 }
