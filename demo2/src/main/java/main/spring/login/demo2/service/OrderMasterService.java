@@ -11,6 +11,8 @@ import java.util.Optional;
 public interface OrderMasterService {
     List<OrderMaster> getOrderMastersByCustomerCode(String customerCode);
 
+    List<OrderMaster> findByBusinessId(String businessId);
+
     List<OrderMaster> findAllOrderMaster();
 
     OrderMaster findByBusinessIdAndOrderNumber(String businessId, Integer orderNumber);
