@@ -41,7 +41,6 @@ public class InventoryService {
             dto.setGoodsCode(inventory.getGoodsCode());
             dto.setGoodsGrade(inventory.getGoodsGrade());
             dto.setInventoryQuantity(inventory.getInventoryQuantity());
-            dto.setSalesPrice(inventory.getSalesPrice());
             dto.setGradeEvaluationDates(inventory.getGradeEvaluationDates());
             dto.setStorageCode(inventory.getStorageCode());
             dto.setGoodsName(findGoodsNameByGoodsCode(inventory.getGoodsCode()));
@@ -60,7 +59,6 @@ public class InventoryService {
             dto.setGoodsCode(inventory.getGoodsCode());
             dto.setGoodsGrade(inventory.getGoodsGrade());
             dto.setInventoryQuantity(inventory.getInventoryQuantity());
-            dto.setSalesPrice(inventory.getSalesPrice());
             dto.setGradeEvaluationDates(inventory.getGradeEvaluationDates());
             dto.setStorageCode(inventory.getStorageCode());
             dto.setGoodsName(findGoodsNameByGoodsCode(inventory.getGoodsCode()));
