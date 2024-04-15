@@ -44,11 +44,11 @@ public class CStorageController {
         }
     }
 
-    @GetMapping("/list")
-    public ResponseEntity<List<CStorageDTO>> getAllCStoragesWithContactName() {
-        // 거래처 이름을 포함한 창고 목록 데이터 조회 로직 구현
-        return ResponseEntity.ok(cStorageService.findAllCStoragesWithContactName());
-    }
+//    @GetMapping("/list")
+//    public ResponseEntity<List<CStorageDTO>> getAllCStoragesWithContactName() {
+//        // 거래처 이름을 포함한 창고 목록 데이터 조회 로직 구현
+//        return ResponseEntity.ok(cStorageService.findAllCStoragesWithContactName());
+//    }
 
 
 

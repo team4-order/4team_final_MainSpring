@@ -60,13 +60,13 @@
         </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-site-plugin -->
+      <!--  &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-site-plugin &ndash;&gt;
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-site-plugin</artifactId>
             <version>3.12.1</version>
         </dependency>
-
+-->
 
     </dependencies>
 
