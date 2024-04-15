@@ -20,6 +20,9 @@ public class GoodsMaster {
     @Column(name = "goods_name", nullable = false)
     private String goodsName;
 
+    @Column(name = "expiration_time", nullable = false)
+    private int expirationtime;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "business_id", nullable = false)
     private Business business;

@@ -32,11 +32,11 @@ public class Inventory {
     @Column(name = "goods_grade", nullable = false, length = 2)
     private String goodsGrade;
 
+    @Column(name = "current_grade", nullable = false, length = 2)
+    private String current_grade;
+
     @Column(name = "inventory_quantity", nullable = false, columnDefinition = "MEDIUMTEXT")
     private String inventoryQuantity;
-
-    @Column(name = "sales_price", nullable = false)
-    private int salesPrice;
 
     @Column(name = "grade_evaluation_dates", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
