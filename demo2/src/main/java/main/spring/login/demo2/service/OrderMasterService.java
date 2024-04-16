@@ -39,4 +39,6 @@ public interface OrderMasterService {
     List<ContactYDto> findCusByBusinessId(String businessId);
 
     List<Chart2Dto> findOrderCntByCustomerCode(String customerCode);
+
+    List<Contact1YDto> findReqStatusByBusinessId(String businessId);
 }

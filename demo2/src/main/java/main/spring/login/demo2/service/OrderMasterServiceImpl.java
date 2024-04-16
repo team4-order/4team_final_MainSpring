@@ -132,4 +132,9 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     public List<Chart2Dto> findOrderCntByCustomerCode(String customerCode) {
         return orderMasterRepository.findOrderCntByCustomerCode(customerCode);
     }
+
+    @Override
+    public List<Contact1YDto> findReqStatusByBusinessId(String businessId){
+        return orderMasterRepository.findReqStatusByBusinessId(businessId);
+    }
 }
