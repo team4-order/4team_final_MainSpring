@@ -135,4 +135,9 @@ public class OrderMasterController {
         return orderMasterService.findOrderCntByCustomerCode(customerCode);
     }
 
+    @GetMapping("/request/{businessId}")
+    public List<Contact1YDto> findReqStatusByBusinessId(@PathVariable("businessId") String businessId){
+        return orderMasterService.findReqStatusByBusinessId(businessId);
+    }
+
 }

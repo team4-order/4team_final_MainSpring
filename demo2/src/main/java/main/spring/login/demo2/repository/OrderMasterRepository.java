@@ -62,4 +62,9 @@ public interface OrderMasterRepository extends JpaRepository<OrderMaster, Intege
     @Query("SELECT COUNT(o) FROM OrderMaster o WHERE o.orderDate BETWEEN :startDate AND :endDate AND o.customerCode = :customerContact AND o.adjustmentStatus = :status")
     int countByDateAndCustomerContactAndStatus(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate, @Param("customerContact") String customerContact, @Param("status") String status);
 
+    @Query("SELECT DISTINCT new main.spring.login.demo2.dto.Contact1YDto(a.contactName, a.contactCode, SUM(o.orderPrice) as price) " +
+            "FROM OrderMaster o " +
+            "JOIN Contact a ON o.customerCode = a.contactCode WHERE o.adjustmentStatus = '정산 요청' " +
+            "AND a.businessId = ?1 GROUP BY a.contactName")
+    List<Contact1YDto> findReqStatusByBusinessId(String businessId);
 }
