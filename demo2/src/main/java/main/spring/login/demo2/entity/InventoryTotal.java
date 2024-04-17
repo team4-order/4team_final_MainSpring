@@ -6,34 +6,41 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Entity
 @Table(name = "inventory_total")
-@AllArgsConstructor
-@NoArgsConstructor
+@IdClass(InventoryTotalPK.class)
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class InventoryTotal {
+    @Id
+    @Column(name = "storage_code")
+    private String storageCode;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "goods_code")
+    @Column(name = "goods_grade", nullable = false)
+    private String goodsGrade;
+
+    @Id
+    @Column(name = "goods_code", nullable = false)
     private String goodsCode;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "goods_grade")
-    private String goodsGrade;
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "goods_grade", referencedColumnName = "goods_grade", insertable = false, updatable = false)
+//    private InventoryTotal inventoryG;
+//
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "goods_code", referencedColumnName = "goods_code", insertable=false, updatable=false)
+//    private InventoryTotal inventoryC;
 
     @Column(name = "total_quantity", nullable = false)
     private int totalQuantity;
 
-    @ManyToOne
-    @JoinColumn(name = "goods_code", referencedColumnName = "goods_code", insertable = false, updatable = false)
-    private Inventory inventoryC;
+    // Remove the individual @Id annotations and fields
+    // If needed, provide accessors to the composite key fields through the embedded ID
 
-    @ManyToOne
-    @JoinColumn(name = "goods_grade", referencedColumnName = "goods_grade", insertable = false, updatable = false)
-    private Inventory inventoryG;
+
+
     // Constructors, getters, and setters
 }

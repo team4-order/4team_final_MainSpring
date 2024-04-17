@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Table(name = "c_storage")
+@IdClass(CStoragePK.class)
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
