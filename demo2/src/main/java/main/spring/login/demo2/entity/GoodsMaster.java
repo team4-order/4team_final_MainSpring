@@ -21,7 +21,7 @@ public class GoodsMaster {
     private String goodsName;
 
     @Column(name = "expiration_time", nullable = false)
-    private int expirationtime;
+    private int expirationTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "business_id", nullable = false)
