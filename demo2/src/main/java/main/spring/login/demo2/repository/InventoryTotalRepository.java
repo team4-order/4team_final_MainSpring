@@ -26,4 +26,3 @@ public interface InventoryTotalRepository  extends JpaRepository<InventoryTotal,
 
     List<InventoryTotal> findInventoryTotalByStorageCode(String storageCode);
 }
-

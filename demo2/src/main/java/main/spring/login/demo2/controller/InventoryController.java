@@ -38,4 +38,3 @@ public class InventoryController {
         return inventoryService.findByStorageCode(storageCode);
     }
 }
-

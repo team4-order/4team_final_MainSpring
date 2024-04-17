@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@IdClass(CStoragePK.class)
 public class CStorage {
     @Id
     @Column(name = "storage_code")
