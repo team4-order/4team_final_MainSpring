@@ -1,6 +1,7 @@
 package main.spring.login.demo2.controller;
 
 import main.spring.login.demo2.dto.OrderProductDto;
+import main.spring.login.demo2.dto.OrderProductYDto;
 import main.spring.login.demo2.entity.OrderMaster;
 import main.spring.login.demo2.entity.OrderProduct;
 import main.spring.login.demo2.repository.OrderProductRepository;
@@ -27,6 +28,11 @@ public class OrderProductController {
     @PostMapping("/detail/post")
     public OrderProduct createOrderProduct(@RequestBody OrderProduct orderProduct) {
         return orderProductRepository.save(orderProduct);
+    }
+
+    @GetMapping("/sc/{storageCode}")
+    public List<OrderProductYDto> gerOrderQuantityByStorageCode(@PathVariable("storageCode") String storageCode){
+        return orderProductService.getOrderQuanByStorageCode(storageCode);
     }
 
 }

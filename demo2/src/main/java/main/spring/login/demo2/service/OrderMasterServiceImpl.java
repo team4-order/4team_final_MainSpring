@@ -1,13 +1,12 @@
 package main.spring.login.demo2.service;
 
-import main.spring.login.demo2.dto.OrderMasterYDto;
+import main.spring.login.demo2.dto.*;
 import main.spring.login.demo2.entity.OrderMaster;
 import main.spring.login.demo2.repository.OrderMasterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +34,7 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     public List<OrderMaster> findAllOrderMaster() {
         return orderMasterRepository.findAll();
     }
+
 
     @Override
     public OrderMaster findByBusinessIdAndOrderNumber(String businessId, Integer orderNumber) {
@@ -67,6 +67,11 @@ public class OrderMasterServiceImpl implements OrderMasterService {
             }
         }
         return false;
+    }
+
+    @Override
+    public List<ContactYDto> findStatusByBusinessId(String businessId) {
+        return orderMasterRepository.findStatusByBusinessId(businessId);
     }
 
     @Override
@@ -110,5 +115,26 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     @Override
     public List<OrderMaster> findByStorageCode(String storageCode){
         return orderMasterRepository.findByStorageCode(storageCode);
+    }
+
+    @Override
+    public List<Chart1Dto> getTotalOrderPriceByBusId(String businessId) {
+        LocalDate lastYear = LocalDate.now().minusYears(1); // Get the date from one year ago
+        return orderMasterRepository.getTotalOrderPriceByBusId(businessId, lastYear);
+    }
+
+    @Override
+    public List<ContactYDto> findCusByBusinessId(String businessId) {
+        return  orderMasterRepository.findCusByBusinessId(businessId);
+    }
+
+    @Override
+    public List<Chart2Dto> findOrderCntByCustomerCode(String customerCode) {
+        return orderMasterRepository.findOrderCntByCustomerCode(customerCode);
+    }
+
+    @Override
+    public List<Contact1YDto> findReqStatusByBusinessId(String businessId){
+        return orderMasterRepository.findReqStatusByBusinessId(businessId);
     }
 }
