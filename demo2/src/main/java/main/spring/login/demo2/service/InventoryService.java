@@ -78,8 +78,32 @@ public class InventoryService {
 //        return orderProductRepository.findOrderedProductSummaries();
 //    }
 
-    public List<OrderProductSummaryDTO> findOrderedProductSummariesForStatus(String orderStatus) {
-        return orderProductRepository.findOrderedProductSummariesForStatus(orderStatus);
+
+
+
+
+    public List<InventoryDTO> findByBusinessId(String businessId) {
+        List<Inventory> inventories = inventoryRepository.findByBusinessId(businessId);
+        List<InventoryDTO> dtos = new ArrayList<>();
+        for (Inventory inventory : inventories) {
+            InventoryDTO dto = new InventoryDTO();
+            // 필드 매핑
+            dto.setFirstStockDate(inventory.getFirstStockDate());
+            dto.setGoodsCode(inventory.getGoodsCode());
+            dto.setGoodsGrade(inventory.getGoodsGrade());
+            dto.setInventoryQuantity(inventory.getInventoryQuantity());
+            dto.setGradeEvaluationDates(inventory.getGradeEvaluationDates());
+            dto.setStorageCode(inventory.getStorageCode());
+            dto.setGoodsName(findGoodsNameByGoodsCode(inventory.getGoodsCode()));
+            dtos.add(dto);
+        }
+        return dtos;
+    }
+
+
+
+    public List<OrderProductSummaryDTO> findOrderedProductSummariesForBusiness(String businessId) {
+        return orderProductRepository.findSummariesByBusinessIdAndStatus(businessId);
     }
 
 }

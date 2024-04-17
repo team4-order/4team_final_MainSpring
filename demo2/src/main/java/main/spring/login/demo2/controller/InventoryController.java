@@ -35,12 +35,15 @@ public class InventoryController {
         return inventoryService.findByStorageCode(storageCode);
     }
 
-    @GetMapping("/summaries")
-    public List<OrderProductSummaryDTO> getOrderedProductSummariesForStatus(@RequestParam(required = false) String orderStatus) {
-        if (orderStatus == null || orderStatus.isEmpty()) {
-            // 주문 상태가 지정되지 않았을 경우 모든 주문에 대한 요약 정보 반환
-            return inventoryService.findOrderedProductSummariesForStatus(orderStatus);
-        }
-        return inventoryService.findOrderedProductSummariesForStatus(orderStatus);
+    @GetMapping("/summaries/{businessId}")
+    public List<OrderProductSummaryDTO> getOrderedProductSummaries(@PathVariable String businessId) {
+        return inventoryService.findOrderedProductSummariesForBusiness(businessId);
+    }
+
+
+
+    @GetMapping("/business/{businessId}")
+    public List<InventoryDTO> getInventoriesByBusinessId(@PathVariable String businessId) {
+        return inventoryService.findByBusinessId(businessId);
     }
 }

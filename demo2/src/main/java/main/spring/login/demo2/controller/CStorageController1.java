@@ -22,7 +22,7 @@ public class CStorageController1 {
     private final ContactRepository contactRepository;
 
 
-@Autowired
+    @Autowired
     public CStorageController1(CStorageService1 cStorageService1, ContactRepository contactRepository) {
         this.cStorageService1 = cStorageService1;
         this.contactRepository = contactRepository;
