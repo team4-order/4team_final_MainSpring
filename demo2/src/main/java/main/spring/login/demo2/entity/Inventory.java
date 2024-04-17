@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 
 @Table(name = "inventory")
 @Entity
@@ -47,15 +49,21 @@ public class Inventory {
     @JoinColumn(name = "storage_code", referencedColumnName = "contact_code", insertable = false, updatable = false)
     private Contact contact;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "goods_code", referencedColumnName = "goods_code", insertable = false, updatable = false)
-    private GradePrice gradePriceC;
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "goods_code", referencedColumnName = "goods_code", insertable = false, updatable = false)
+//    private GradePrice gradePriceC;
+//
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "goods_grade", referencedColumnName = "goods_grade", insertable = false, updatable = false)
+//    private GradePrice gradePriceG;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "goods_grade", referencedColumnName = "goods_grade", insertable = false, updatable = false)
-    private GradePrice gradePriceG;
 
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumns({
+            @JoinColumn(name = "goods_code", referencedColumnName = "goods_code", insertable = false, updatable = false),
+            @JoinColumn(name = "goods_grade", referencedColumnName = "goods_grade", insertable = false, updatable = false)
+    })
+    private GradePrice gradePrice;
     // Getters and Setters
     // test
 
@@ -69,4 +77,7 @@ public class Inventory {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "goods_code", referencedColumnName = "goods_code", insertable = false, updatable = false)
     private GoodsMaster goodsMaster;
+
+
+
 }

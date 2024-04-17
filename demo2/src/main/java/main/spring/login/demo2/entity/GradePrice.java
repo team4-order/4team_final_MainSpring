@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@IdClass(GradePriceId.class)
 public class GradePrice {
     @Id
     @Column(name = "goods_grade", length = 2)

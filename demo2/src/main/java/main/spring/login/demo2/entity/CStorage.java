@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@IdClass(CStorageId.class) // 복합 키 클래스를 지정
 public class CStorage {
     @Id
     @Column(name = "storage_code")
