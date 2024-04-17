@@ -20,4 +20,9 @@ public class StorageService {
     public List<Contact> findAllWarehouses() {
         return storageRepository.findByContactDelimiter("S");
     }
+
+    // 비즈니스 ID에 따른 창고 목록을 찾는 메소드 추가
+    public List<Contact> findWarehousesByBusinessId(String businessId) {
+        return storageRepository.findWarehousesByBusinessId(businessId);
+    }
 }
