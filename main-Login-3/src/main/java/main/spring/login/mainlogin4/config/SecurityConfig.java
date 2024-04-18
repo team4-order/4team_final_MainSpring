@@ -78,7 +78,8 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/login", "/", "/join","/api/v1/oauth2/google","/api/ausers/findallusername","/api/users/findallusername","admin/overview","admin/img/","/api/delete-username").permitAll()
+                        .requestMatchers("/login", "/", "/join","/api/v1/oauth2/google","/api/ausers/findallusername","/api/users/findallusername","admin/overview","admin/img/","/api/delete-username","admin/overview1/BUS002","/api/*").permitAll()
+
                         .anyRequest().authenticated());
 
 
