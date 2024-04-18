@@ -74,9 +74,9 @@ public class Inventory {
         private String goodsGrade;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "goods_code", referencedColumnName = "goods_code", insertable = false, updatable = false)
-    private GoodsMaster goodsMaster;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "goods_code", referencedColumnName = "goods_code", insertable = false, updatable = false)
+//    private GoodsMaster goodsMaster;
 
 
 

@@ -26,8 +26,8 @@ public class Input {
     @Column(name = "goods_grade", nullable = false, length = 2)
     private String goodsGrade;
 
-    @Column(name = "input_quantity", nullable = false, columnDefinition = "MEDIUMTEXT")
-    private String inputQuantity;
+    @Column(name = "input_quantity", nullable = false)
+    private long inputQuantity;
 
     @Column(name = "input_day", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
