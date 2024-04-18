@@ -15,5 +15,4 @@ public class InventoryDTO {
     private String storageCode;
     private String goodsName; // GoodsMaster로부터 가져온 상품 이름
 
-    // 생성자, Getter 및 Setter 생략
 }

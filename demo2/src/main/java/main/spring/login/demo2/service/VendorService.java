@@ -32,4 +32,9 @@ public class VendorService {
         }).orElseThrow(() -> new RuntimeException("Contact not found with code: " + contactCode));
     }
 
+
+    public List<Contact> getAllVendorsByBusinessId(String businessId) {
+        return vendorRepository.findByBusinessIdAndContactDelimiter(businessId, "V");
+    }
+
 }
