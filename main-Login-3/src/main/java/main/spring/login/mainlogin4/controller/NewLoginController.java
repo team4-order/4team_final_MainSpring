@@ -32,7 +32,7 @@ public class NewLoginController {
     @RequestMapping(value="/api/v1/oauth2/google", method = RequestMethod.POST)
     public String loginUrlGoogle(){
         String reqUrl = "https://accounts.google.com/o/oauth2/v2/auth?client_id=" + googleClientId
-                + "&redirect_uri=http://localhost:8080/api/v1/oauth2/google&response_type=code&scope=email%20profile%20openid&access_type=offline";
+                + "&redirect_uri=http://localhost:8079/api/v1/oauth2/google&response_type=code&scope=email%20profile%20openid&access_type=offline";
         return reqUrl;
     }
 
@@ -44,7 +44,7 @@ public class NewLoginController {
                 .clientId(googleClientId)
                 .clientSecret(googleClientPw)
                 .code(authCode)
-                .redirectUri("http://localhost:8080/api/v1/oauth2/google")
+                .redirectUri("http://localhost:8079/api/v1/oauth2/google")
                 .grantType("authorization_code").build();
         ResponseEntity<GoogleResponse> resultEntity = restTemplate.postForEntity("https://oauth2.googleapis.com/token",
                 googleOAuthRequestParam, GoogleResponse.class);
@@ -75,7 +75,7 @@ public class NewLoginController {
             Class.forName("org.mariadb.jdbc.Driver");
 
             // 데이터베이스 연결
-            connection = DriverManager.getConnection("jdbc:mariadb://3.35.197.144:3306/user1", "root", "1234");
+            connection = DriverManager.getConnection("jdbc:mariadb://3.37.30.61:3306/user1", "root", "1234");
 
             // SQL 쿼리 작성
             String sql = "INSERT INTO UserEntity (username, role) VALUES (?, ?)";

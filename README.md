@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # 4team_final_MainSpring
 spring 메인 레포
 
@@ -12,7 +12,11 @@ spring 메인 레포
 
 
 
-=======
+
 전승민 branch
+
+
+
+
 사실 윤채영 branch
->>>>>>> ce677826c9497c4354bf56e96a4d6cffc0c162f0
+
