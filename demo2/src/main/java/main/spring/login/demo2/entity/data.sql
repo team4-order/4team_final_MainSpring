@@ -1,17 +1,36 @@
 -- business 테이블에 더미 데이터 삽입
 INSERT INTO `business` (`business_id`, `business_name`, `business_password`, `business_number`, `business_link`)
 VALUES
-    ('BUS001', 'Business1', 'password1', 123456789, 'http://www.business1.com'),
-    ('BUS002', 'Business2', 'password2', 987654321, 'http://www.business2.com');
+    ('BUS01', '한화유통', 'password1', 123456789, 'http://www.business1.com'),
+    ('BUS02', 'Business2', 'password2', 987654321, 'http://www.business2.com');
 
 -- contact 테이블에 더미 데이터 삽입 /(공급처V, 판매처C, 창고S)
 INSERT INTO `contact` (`contact_code`, `contact_delimiter`, `contact_name`, `contact_address`, `customer_password`, `storage_code`, `business_id`)
 VALUES
-    ('CON002', 'C', 'Customer2', '321 Street, City2', 'custpass2', NULL, 'BUS002');
-    ('CON001', 'C', 'Customer1', '123 Street, City1', 'custpass1', NULL, 'BUS002'),
-    ('STR001', 'S', 'Storage1', '789 Street, City3', null, null, 'BUS002'),
-    ('STR002', 'S', 'Storage2', '987 Street, City4', null, null, 'BUS002'),
-    ('SUP001', 'V', 'Supplier1', '456 Street, City2', null, 'STR001', 'BUS002');
+#     ('CON002', 'C', '과일아삭', '제주 제주시 도두5길 13', '1234!', NULL, 'BUS01'),
+#     ('CON001', 'C', 'CJ제일제당 ', '123 Street, City1', '1276', NULL, 'BUS01'),
+#     ('CON003', 'C', '농업회사법인(주)하나', '충남 천안시 서북구 성환읍 연암로 198', '8472', NULL, 'BUS01');
+    ('CON004', 'C', '자인청과(주)', '경기 화성시 봉담읍 경남로 40', '9318', NULL, 'BUS01'),
+    ('CON005', 'C', '(주)백운', '서울 서초구 강남대로 201', '5247', NULL, 'BUS01'),
+    ('CON006', 'C', '다산농산(주)', '경기 하남시 미사강변대로 12', '3921', NULL, 'BUS01'),
+    ('CON007', 'C', '(주)거양수산', '인천 연수구 경원대로 20', '6834', NULL, 'BUS01'),
+    ('CON008', 'C', '홍성유기농영농조합법인', '충북 제천시 연수구 삼천리 19', '4765', NULL, 'BUS01'),
+    ('CON009', 'C', '하늘곳간영농조합법인', '경북 안동시 축현면 하늘곳간로 32', '3159', NULL, 'BUS01'),
+    ('CON010', 'C', '(주)와이마트신가풍영점', '대전 유성구 대학로 291', '7285', NULL, 'BUS01'),
+    ('CON011', 'C', '홍삼씨스텍(주)', '전남 순천시 중앙로 30', '8294', NULL, 'BUS01'),
+    ('CON012', 'C', '한국농산(주)', '부산 부산진구 엄궁로 31', '6178', NULL, 'BUS01');
+#     ('CON013', 'C', '태양농산(주)', '강원 춘천시 퇴계로 32', '7543', NULL, 'BUS01'),
+#     ('CON014', 'C', '(주)해피마트', '경남 창원시 성산구 원이대로 123', '3829', NULL, 'BUS01'),
+#     ('CON015', 'C', '산들산들농산', '서울 강남구 도산대로 124', '9512', NULL, 'BUS01'),
+#     ('CON016', 'C', '경남농산(주)', '경기 수원시 영통구 매봉로 45', '6298', NULL, 'BUS01'),
+#     ('CON017', 'C', '행복가득농산(주)', '충북 청주시 상당구 청남로 87', '5731', NULL, 'BUS01'),
+#     ('CON018', 'C', '사과나무농산', '전북 전주시 완산구 백제대로 167', '8194', NULL, 'BUS01'),
+#     ('CON019', 'C', '감나무영농조합법인', '경북 포항시 남구 용흥로 89', '2647', NULL, 'BUS01'),
+#     ('CON020', 'C', '(주)딸기단', '서울 서대문구 거북골로 56', '4173', NULL, 'BUS01'),
+#     ('CON021', 'C', '복숭아마을농산', '경남 진주시 진양호로 76', '9382', NULL, 'BUS01'),
+#     ('CON022', 'C', '배나무농산', '충남 아산시 배방읍 아산호로 32', '7256', NULL, 'BUS01');
+
+
 -- c_storage 테이블에 더미 데이터 삽입 /판매처별 노출 창고
 INSERT INTO `c_storage` (`storage_code`, `customer_code`)
 VALUES
