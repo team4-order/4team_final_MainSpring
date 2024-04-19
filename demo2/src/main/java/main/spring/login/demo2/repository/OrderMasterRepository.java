@@ -35,7 +35,7 @@ public interface OrderMasterRepository extends JpaRepository<OrderMaster, Intege
             "AND a.businessId = ?1")
     List<ContactYDto> findCusByBusinessId(String businessId);
 
-    @Query("SELECT new main.spring.login.demo2.dto.OrderMasterYDto(o.orderNumber, o.orderPrice, o.orderDate, o.orderStatus, c.contactName) " +
+    @Query("SELECT new main.spring.login.demo2.dto.OrderMasterYDto(o.orderNumber, o.orderPrice, o.orderDate, o.orderStatus, c.contactName, c.contactCode) " +
             "FROM OrderMaster o JOIN Contact c " +
             "ON o.customerCode = c.contactCode WHERE c.businessId = :businessId")
     List<OrderMasterYDto> findOrderMasterDtoByBusinessId(@Param("businessId") String businessId);

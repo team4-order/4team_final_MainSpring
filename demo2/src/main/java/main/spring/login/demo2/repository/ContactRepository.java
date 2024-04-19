@@ -30,4 +30,6 @@ public interface ContactRepository extends JpaRepository<Contact, String> {
     @Query("SELECT new main.spring.login.demo2.dto.ContactYDto(contactName, contactCode)" +
             "FROM Contact WHERE businessId = :businessId")
     List<ContactYDto> findContactNameByBusinessId(@Param("businessId") String businessId);
+
+
 }
