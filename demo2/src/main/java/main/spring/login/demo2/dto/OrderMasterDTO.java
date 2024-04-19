@@ -11,8 +11,8 @@ public class OrderMasterDTO {
 
     private String adjustmentStatus;
 
-    public OrderMasterDTO(String adjustmentStatus){
-        this.adjustmentStatus = adjustmentStatus;
-    }
+//    public OrderMasterDTO(String adjustmentStatus){
+//        this.adjustmentStatus = adjustmentStatus;
+//    }
 
 }
