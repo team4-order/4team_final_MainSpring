@@ -1,8 +1,10 @@
 package main.spring.login.demo2.repository;
 
+import jakarta.transaction.Transactional;
 import main.spring.login.demo2.dto.*;
 import main.spring.login.demo2.entity.OrderMaster;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -35,7 +37,7 @@ public interface OrderMasterRepository extends JpaRepository<OrderMaster, Intege
             "AND a.businessId = ?1")
     List<ContactYDto> findCusByBusinessId(String businessId);
 
-    @Query("SELECT new main.spring.login.demo2.dto.OrderMasterYDto(o.orderNumber, o.orderPrice, o.orderDate, o.orderStatus, c.contactName) " +
+    @Query("SELECT new main.spring.login.demo2.dto.OrderMasterYDto(o.orderNumber, o.orderPrice, o.orderDate, o.orderStatus, c.contactName, o.customerCode) " +
             "FROM OrderMaster o JOIN Contact c " +
             "ON o.customerCode = c.contactCode WHERE c.businessId = :businessId")
     List<OrderMasterYDto> findOrderMasterDtoByBusinessId(@Param("businessId") String businessId);
@@ -67,4 +69,9 @@ public interface OrderMasterRepository extends JpaRepository<OrderMaster, Intege
             "JOIN Contact a ON o.customerCode = a.contactCode WHERE o.adjustmentStatus = '정산 요청' " +
             "AND a.businessId = ?1 GROUP BY a.contactName")
     List<Contact1YDto> findReqStatusByBusinessId(String businessId);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE OrderMaster o SET o.orderStatus = ?2 WHERE o.orderNumber = ?1")
+    int updateOrderStatus(int orderNumber, String status);
 }

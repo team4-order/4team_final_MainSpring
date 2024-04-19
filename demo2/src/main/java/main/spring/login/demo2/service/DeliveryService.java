@@ -13,7 +13,7 @@ public class DeliveryService {
     @Autowired
     private DeliveryRepository deliveryRepository;
 
-    public List<DeliveryDetailDTO> getAllDeliveriesWithDetails() {
-        return deliveryRepository.findAllWithDetails();
-    }
+//    public List<DeliveryDetailDTO> getAllDeliveriesWithDetails() {
+//        return deliveryRepository.findAllWithDetails();
+//    }
 }

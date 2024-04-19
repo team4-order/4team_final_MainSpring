@@ -12,10 +12,12 @@ import java.time.LocalDateTime;
 public class DeliveryDetailDTO {
     private String deliveryNumber;
     private String deliveryAddress;
+    private LocalDateTime deliveryApply;
     private LocalDateTime deliveryArrive;
     private int orderNumber;
     private String goodsName;
     private String goodsCode;
     private String contactName;
-    private LocalDateTime deliveryDate;
+    private String orderStatus;
+
 }
