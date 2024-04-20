@@ -142,4 +142,20 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     public Boolean updateOrderStatusToDelivered(int orderNumber) {
         return orderMasterRepository.updateOrderStatus(orderNumber, "배송 완료") > 0;
     }
+
+    @Override
+    @Transactional
+    public Boolean updateOrderStatus1ToDelivered(int orderNumber) {
+        Optional<OrderMaster> optionalOrderMaster = orderMasterRepository.findById(orderNumber);
+        if (optionalOrderMaster.isPresent()) {
+            OrderMaster orderMaster = optionalOrderMaster.get();
+            orderMaster.setOrderStatus("출고 준비 중"); // 주문 상태를 "출고 준비 중"으로 변경
+            orderMasterRepository.save(orderMaster); // 변경된 상태를 저장
+
+            return true;
+        } else {
+            return false; // 주문을 찾을 수 없는 경우 false 반환
+            // 또는 throw new RuntimeException("주문을 찾을 수 없습니다: " + orderNumber);
+        }
+    }
 }
