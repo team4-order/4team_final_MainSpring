@@ -22,13 +22,17 @@ public class Delivery {
     @Column(name = "delivery_address", nullable = false)
     private String deliveryAddress;
 
-    @Column(name = "delivery_apply")
-    @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime deliveryApply;
 
     @Column(name = "delivery_arrive", nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime deliveryArrive;
+
+    @Column(name = "delivery_apply")
+    private LocalDateTime deliveryApply;
+
+//    @Column(name = "delivery_date")
+//    @Temporal(TemporalType.TIMESTAMP)
+//    private LocalDateTime deliveryDate;
 
     @Column(name = "order_number", nullable = false)
     private int orderNumber;

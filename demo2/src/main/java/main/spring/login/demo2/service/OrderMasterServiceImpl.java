@@ -137,4 +137,9 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     public List<Contact1YDto> findReqStatusByBusinessId(String businessId){
         return orderMasterRepository.findReqStatusByBusinessId(businessId);
     }
+
+    @Override
+    public Boolean updateOrderStatusToDelivered(int orderNumber) {
+        return orderMasterRepository.updateOrderStatus(orderNumber, "배송 완료") > 0;
+    }
 }
