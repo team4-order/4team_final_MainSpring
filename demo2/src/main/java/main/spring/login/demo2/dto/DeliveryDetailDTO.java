@@ -1,12 +1,12 @@
 package main.spring.login.demo2.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class DeliveryDetailDTO {
@@ -14,8 +14,11 @@ public class DeliveryDetailDTO {
     private String deliveryAddress;
     private LocalDateTime deliveryArrive;
     private int orderNumber;
+
+    private LocalDateTime deliveryApply;
+
     private String goodsName;
     private String goodsCode;
     private String contactName;
-    private LocalDateTime deliveryDate;
+//    private LocalDateTime deliveryDate;
 }
