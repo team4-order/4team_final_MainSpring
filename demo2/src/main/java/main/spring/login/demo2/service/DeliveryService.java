@@ -13,7 +13,11 @@ public class DeliveryService {
     @Autowired
     private DeliveryRepository deliveryRepository;
 
-    public List<DeliveryDetailDTO> getAllDeliveriesWithDetails() {
-        return deliveryRepository.findAllWithDetails();
+//    public List<DeliveryDetailDTO> getAllDeliveriesWithDetails() {
+//        return deliveryRepository.findAllWithDetails();
+//    }
+
+    public Boolean updateDeliveryArriveToDelivered(int orderNumber) {
+        return deliveryRepository.updateDeliveryArrive(orderNumber) > 0;
     }
 }

@@ -26,9 +26,12 @@ public class Delivery {
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime deliveryArrive;
 
-    @Column(name = "delivery_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime deliveryDate;
+    @Column(name = "delivery_apply")
+    private LocalDateTime deliveryApply;
+
+//    @Column(name = "delivery_date")
+//    @Temporal(TemporalType.TIMESTAMP)
+//    private LocalDateTime deliveryDate;
 
     @Column(name = "order_number", nullable = false)
     private int orderNumber;

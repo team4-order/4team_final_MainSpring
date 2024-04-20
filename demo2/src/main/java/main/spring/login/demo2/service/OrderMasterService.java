@@ -41,4 +41,6 @@ public interface OrderMasterService {
     List<Chart2Dto> findOrderCntByCustomerCode(String customerCode);
 
     List<Contact1YDto> findReqStatusByBusinessId(String businessId);
+
+    Boolean updateOrderStatusToDelivered(int orderNumber);
 }
