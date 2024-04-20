@@ -16,7 +16,7 @@ public class DeliveryDetailDTO {
     private LocalDateTime deliveryArrive;
     private int orderNumber;
 
-    private LocalDateTime deliveryApply;
+    //private LocalDateTime deliveryApply;
 
     private String goodsName;
     private String goodsCode;

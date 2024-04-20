@@ -15,14 +15,14 @@ import java.util.List;
 @Repository
 public interface DeliveryRepository extends JpaRepository<Delivery, String> {
 
-    @Query("SELECT new main.spring.login.demo2.dto.DeliveryDetailDTO(d.deliveryNumber, d.deliveryAddress, d.deliveryArrive, d.orderNumber, " +
-            "d.deliveryApply, gm.goodsName, gm.goodsCode, c.contactName) " +
-            "FROM Delivery d " +
-            "JOIN d.orderMaster om " +
-            "JOIN OrderProduct op ON om.orderNumber = op.orderMaster.orderNumber " +
-            "JOIN GoodsMaster gm ON op.goodsCode = gm.goodsCode " +
-            "JOIN Contact c ON om.customerCode = c.contactCode")
-    List<DeliveryDetailDTO> findAllWithDetails();
+//    @Query("SELECT new main.spring.login.demo2.dto.DeliveryDetailDTO(d.deliveryNumber, d.deliveryAddress, d.deliveryArrive, d.orderNumber, " +
+//            "d.deliveryApply, gm.goodsName, gm.goodsCode, c.contactName) " +
+//            "FROM Delivery d " +
+//            "JOIN d.orderMaster om " +
+//            "JOIN OrderProduct op ON om.orderNumber = op.orderMaster.orderNumber " +
+//            "JOIN GoodsMaster gm ON op.goodsCode = gm.goodsCode " +
+//            "JOIN Contact c ON om.customerCode = c.contactCode")
+//    List<DeliveryDetailDTO> findAllWithDetails();
 
     @Query("SELECT DISTINCT new main.spring.login.demo2.dto.DeliveryYDto(d.deliveryNumber, d.deliveryAddress, d.deliveryApply, d.deliveryArrive, d.orderNumber," +
             "c.contactName, om.orderStatus) " +
