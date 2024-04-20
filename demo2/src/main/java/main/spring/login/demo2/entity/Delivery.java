@@ -22,7 +22,8 @@ public class Delivery {
     @Column(name = "delivery_address", nullable = false)
     private String deliveryAddress;
 
-    @Column(name = "delivery_arrive")
+
+    @Column(name = "delivery_arrive", nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime deliveryArrive;
 
