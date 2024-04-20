@@ -43,4 +43,6 @@ public interface OrderMasterService {
     List<Contact1YDto> findReqStatusByBusinessId(String businessId);
 
     Boolean updateOrderStatusToDelivered(int orderNumber);
+
+    Boolean updateOrderStatus1ToDelivered(int orderNumber);
 }

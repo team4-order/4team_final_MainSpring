@@ -57,24 +57,34 @@ public class DeliveryController {
             }
         }
 
-        @PostMapping("/delivery/{orderNumber}")
-        public ResponseEntity<DeliveryDetailDTO> createDelivery ( @PathVariable int orderNumber,
-        @RequestBody DeliveryDetailDTO deliveryDetailDTO){
+    @PostMapping("/delivery/{orderNumber}")
+    public ResponseEntity<DeliveryDetailDTO> createDelivery(@PathVariable int orderNumber,
+                                                            @RequestBody DeliveryDetailDTO deliveryDetailDTO) {
 
-            // 주문번호를 사용하여 DeliveryDetailDTO 객체를 생성
+        // 주문 상태를 "출고 준비 중"으로 변경
+        boolean updated = orderMasterService.updateOrderStatus1ToDelivered(orderNumber);
+
+        if (updated) {
+            // 주문 상태가 성공적으로 변경되었을 때 배송 정보 저장
             DeliveryDetailDTO newDelivery = new DeliveryDetailDTO();
             newDelivery.setDeliveryNumber(generateDeliveryNumber());
             newDelivery.setDeliveryAddress(deliveryDetailDTO.getDeliveryAddress());
             newDelivery.setDeliveryArrive(deliveryDetailDTO.getDeliveryArrive());
-            newDelivery.setDeliveryApply(LocalDateTime.now()); // 현재 시간 설정
+            newDelivery.setDeliveryApply(LocalDateTime.now());
             newDelivery.setOrderNumber(orderNumber);
 
+            // 주문 배송 정보 저장
             DeliveryDetailDTO savedDelivery = deliveryService1.saveDelivery(newDelivery);
-
             return new ResponseEntity<>(savedDelivery, HttpStatus.CREATED);
+//        } else {
+            // 주문 상태 변경에 실패한 경우
+//            return ResponseEntity.badRequest().body("Failed to update order status");
         }
+        return null;
+    }
 
-        // 랜덤한 13자리 배송번호 생성 메서드
+
+    // 랜덤한 13자리 배송번호 생성 메서드
         private String generateDeliveryNumber () {
             return UUID.randomUUID().toString().replace("-", "").substring(0, 10);
         }
