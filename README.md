@@ -12,8 +12,6 @@ spring 메인 레포
 
 
 
-전승민 branch
-
 
 
 
