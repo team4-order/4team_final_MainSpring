@@ -16,4 +16,8 @@ public class DeliveryService {
 //    public List<DeliveryDetailDTO> getAllDeliveriesWithDetails() {
 //        return deliveryRepository.findAllWithDetails();
 //    }
+
+    public Boolean updateDeliveryArriveToDelivered(int orderNumber) {
+        return deliveryRepository.updateDeliveryArrive(orderNumber) > 0;
+    }
 }

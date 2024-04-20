@@ -70,6 +70,8 @@ public interface OrderMasterRepository extends JpaRepository<OrderMaster, Intege
             "AND a.businessId = ?1 GROUP BY a.contactName")
     List<Contact1YDto> findReqStatusByBusinessId(String businessId);
 
+
+    // 주문 상태 update
     @Modifying
     @Transactional
     @Query("UPDATE OrderMaster o SET o.orderStatus = ?2 WHERE o.orderNumber = ?1")

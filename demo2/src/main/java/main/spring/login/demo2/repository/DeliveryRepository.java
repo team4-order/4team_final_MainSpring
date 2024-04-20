@@ -1,9 +1,11 @@
 package main.spring.login.demo2.repository;
 
+import jakarta.transaction.Transactional;
 import main.spring.login.demo2.dto.DeliveryDetailDTO;
 import main.spring.login.demo2.dto.DeliveryYDto;
 import main.spring.login.demo2.entity.Delivery;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -29,5 +31,11 @@ public interface DeliveryRepository extends JpaRepository<Delivery, String> {
             "JOIN Contact c ON om.customerCode = c.contactCode " +
             "WHERE c.businessId = :businessId")
     List<DeliveryYDto> findDeliveryByBusinessId(@Param("businessId") String businessId);
+
+    // 배송 도착 시간 update
+    @Modifying
+    @Transactional
+    @Query("UPDATE Delivery d SET d.deliveryArrive = current timestamp WHERE d.orderNumber = ?1")
+    int updateDeliveryArrive(int orderNumber);
 
 }

@@ -35,10 +35,13 @@ public class DeliveryController {
         return deliveryRepository.findDeliveryByBusinessId(businessId);
     }
 
+
+    // 배송 완료 시간, 주문 상태 동시에 update
     @PutMapping("/{orderNumber}/complete")
     public ResponseEntity<String> updateOrderStatusToDelivered(@PathVariable int orderNumber) {
+        boolean updatedTime = deliveryService.updateDeliveryArriveToDelivered(orderNumber);
         boolean updated = orderMasterService.updateOrderStatusToDelivered(orderNumber);
-        if (updated) {
+        if (updated && updatedTime) {
             return ResponseEntity.ok("Order status updated to 배송 완료");
         } else {
             return ResponseEntity.badRequest().body("Failed to update order status");
