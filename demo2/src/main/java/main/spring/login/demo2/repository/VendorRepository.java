@@ -13,4 +13,7 @@ public interface VendorRepository extends JpaRepository<Contact,String> {
     List<Contact> findByContactDelimiter(String contactDelimiter);
 
     Optional<Contact> findByContactCode(String contactCode);
+
+    List<Contact> findByBusinessIdAndContactDelimiter(String businessId, String contactDelimiter);
+
 }

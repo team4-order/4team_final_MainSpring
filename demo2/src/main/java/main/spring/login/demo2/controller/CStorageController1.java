@@ -22,7 +22,7 @@ public class CStorageController1 {
     private final ContactRepository contactRepository;
 
 
-@Autowired
+    @Autowired
     public CStorageController1(CStorageService1 cStorageService1, ContactRepository contactRepository) {
         this.cStorageService1 = cStorageService1;
         this.contactRepository = contactRepository;
@@ -91,10 +91,20 @@ public class CStorageController1 {
 
 
     // 거래처 목록을 반환하는 엔드포인트
-    @GetMapping("/contacts")
-    public List<Contact> getContacts() {
-        // 'C' 구분자를 가진 거래처만 조회
-        return contactRepository.findByContactDelimiter("C");
-    }
+//    @GetMapping("/contacts")
+//    public List<Contact> getContacts() {
+//        // 'C' 구분자를 가진 거래처만 조회
+//        return contactRepository.findByContactDelimiter("C");
+//    }
 
+
+
+    @GetMapping("/contacts/{businessId}")
+    public ResponseEntity<List<Contact>> getContactsByBusinessId(@PathVariable String businessId) {
+        List<Contact> contacts = contactRepository.findByBusinessId(businessId);
+        if (contacts.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(contacts);
+    }
 }

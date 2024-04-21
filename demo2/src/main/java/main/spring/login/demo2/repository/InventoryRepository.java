@@ -25,4 +25,7 @@ public interface InventoryRepository extends JpaRepository<Inventory, InventoryI
             nativeQuery = true)
     List<Object[]> findExpiredInventory();
 
+    // 비즈니스 ID에 따른 인벤토리 조회
+    @Query("SELECT i FROM Inventory i JOIN i.contact c WHERE c.businessId = :businessId")
+    List<Inventory> findByBusinessId(String businessId);
 }

@@ -33,8 +33,9 @@ public interface OrderProductRepository extends JpaRepository<OrderProduct, Inte
     @Query("SELECT new main.spring.login.demo2.dto.OrderProductSummaryDTO(op.goodsCode, SUM(op.orderQuantity)) " +
             "FROM OrderProduct op " +
             "JOIN op.orderMaster om " +
-            "WHERE om.orderStatus = :orderStatus " +
+            "JOIN om.customerContact cc " +
+            "WHERE cc.businessId = :businessId AND om.orderStatus = '출고 준비 중' " +
             "GROUP BY op.goodsCode")
-    List<OrderProductSummaryDTO> findOrderedProductSummariesForStatus(@Param("orderStatus") String orderStatus);
+    List<OrderProductSummaryDTO> findSummariesByBusinessIdAndStatus(@Param("businessId") String businessId);
 
 }

@@ -40,4 +40,10 @@ public class VendorController {
         }
     }
 
+
+    @GetMapping("/{businessId}")
+    public List<Contact> getAllVendorsByBusinessId(@PathVariable String businessId) {
+        return vendorService.getAllVendorsByBusinessId(businessId);
+    }
+
 }
