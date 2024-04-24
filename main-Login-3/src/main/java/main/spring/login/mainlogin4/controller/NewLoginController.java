@@ -75,7 +75,7 @@ public class NewLoginController {
             Class.forName("org.mariadb.jdbc.Driver");
 
             // 데이터베이스 연결
-            connection = DriverManager.getConnection("jdbc:mariadb://3.35.182.5:3307/oms", "root", "1234");
+            connection = DriverManager.getConnection("jdbc:mariadb://172.31.9.120:3307/oms", "root", "1234");
 
             // SQL 쿼리 작성
             String sql = "INSERT INTO UserEntity (username, role) VALUES (?, ?)";
